@@ -1,6 +1,5 @@
 {  "name": "vite_react_shadcn_ts",
-  "private": true,
-  "version": "0.0.0",
+  "private": true,  "version": "0.0.0",
   "type": "module",
   "homepage": "https://grajrb.github.io/portfolio-hub.github.io",
   "scripts": {
