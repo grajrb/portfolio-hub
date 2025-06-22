@@ -10,7 +10,7 @@ import { Mail, MapPin, Phone, Send, Github, Linkedin } from 'lucide-react';
 export const ContactSection = () => {
   // Initialize EmailJS on component mount
   useEffect(() => {
-    emailjs.init("_t2m5Gj4U19gYWn79");
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
   }, []);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -30,12 +30,11 @@ export const ContactSection = () => {
     setIsSubmitting(true);
     
     // Log the form data to verify it's correct
-    console.log('Form data being sent:', formData);
-      // Using @emailjs/browser with explicit send method and different parameter names
+    console.log('Form data being sent:', formData);    // Using @emailjs/browser with explicit send method and different parameter names
     emailjs
       .send(
-        'service_9zyfkxj', 
-        'template_2v99yzf', 
+        import.meta.env.VITE_EMAILJS_SERVICE_ID, 
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID, 
         {
           // Try with different variations of parameter names
           name: formData.from_name,
@@ -46,8 +45,8 @@ export const ContactSection = () => {
           subject: formData.subject,
           message: formData.message
         },
-        '_t2m5Gj4U19gYWn79'
-      )      .then((result) => {
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      ).then((result) => {
         console.log('Success:', result.text);
         console.log('Email sent with parameters:', {
           name: formData.from_name,
