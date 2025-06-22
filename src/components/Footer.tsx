@@ -59,13 +59,12 @@ export const Footer = () => {
           </div>
           
           <div>
-            <h3 className="font-display text-lg font-semibold mb-4">Navigation</h3>
-            <nav className="flex flex-col space-y-3">
-              <a href="#home" className="text-muted-foreground hover:text-foreground transition-colors">Home</a>
-              <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">About</a>
-              <a href="#projects" className="text-muted-foreground hover:text-foreground transition-colors">Projects</a>
-              <a href="#skills" className="text-muted-foreground hover:text-foreground transition-colors">Skills</a>
-              <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+            <h3 className="font-display text-lg font-semibold mb-4">Navigation</h3>            <nav className="flex flex-col space-y-3">
+              <a href="#/" className="text-muted-foreground hover:text-foreground transition-colors">Home</a>
+              <a href="#/#about" className="text-muted-foreground hover:text-foreground transition-colors">About</a>
+              <a href="#/#projects" className="text-muted-foreground hover:text-foreground transition-colors">Projects</a>
+              <a href="#/#skills" className="text-muted-foreground hover:text-foreground transition-colors">Skills</a>
+              <a href="#/#contact" className="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
             </nav>
           </div>
           
@@ -81,16 +80,15 @@ export const Footer = () => {
         <div className="mt-12 pt-6 border-t border-border/60 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground mb-4 md:mb-0">
             © {new Date().getFullYear()} Portfolio. All rights reserved.
-          </p>
-          <div className="flex space-x-6 text-sm text-muted-foreground">
+          </p>          <div className="flex space-x-6 text-sm text-muted-foreground">
             <a
-              href="/privacy-policy"
+              href="#/privacy-policy"
               className="hover:text-foreground transition-colors"
             >
               Privacy Policy
             </a>
             <a
-              href="/terms-of-service"
+              href="#/terms-of-service"
               className="hover:text-foreground transition-colors"
             >
               Terms of Service
