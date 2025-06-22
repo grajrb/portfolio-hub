@@ -4,55 +4,64 @@ import { cn } from '@/lib/utils';
 
 const skillCategories = [
   {
-    title: 'Languages',
+    title: 'Programming Languages',
     skills: [
-      { name: 'C++', level: 85 },
+      { name: 'JavaScript', level: 90 },
       { name: 'TypeScript', level: 85 },
-      { name: 'JavaScript', level: 80 },
-      { name: 'Python', level: 75 },
-      { name: 'HTML/CSS', level: 85 },
       { name: 'SQL', level: 80 },
     ],
   },
   {
-    title: 'Frameworks',
+    title: 'Frontend Technologies',
     skills: [
-      { name: '.NET Core', level: 70 },
+      { name: 'React.js', level: 90 },
+      { name: 'Next.js', level: 85 },
+      { name: 'Redux', level: 80 },
+      { name: 'HTML5', level: 90 },
+      { name: 'CSS3', level: 85 },
+      { name: 'Tailwind CSS', level: 80 },
+      { name: 'Bootstrap', level: 85 },
+    ],
+  },
+  {
+    title: 'Backend Technologies',
+    skills: [
       { name: 'Node.js', level: 85 },
-      { name: 'Bootstrap', level: 80 },
-      { name: 'Angular', level: 75 },
+      { name: 'Express.js', level: 80 },
+      { name: 'RESTful APIs', level: 85 },
+      { name: 'GraphQL', level: 75 },
+      { name: 'Socket.IO', level: 75 },
+      { name: 'Microservices', level: 70 },
     ],
   },
   {
-    title: 'Tools & Platforms',
+    title: 'Databases',
     skills: [
-      { name: 'VS Code', level: 90 },
-      { name: 'npm', level: 85 },
-      { name: 'CMake', level: 70 },
-      { name: 'MSYS2', level: 60 },
+      { name: 'PostgreSQL', level: 85 },
+      { name: 'MongoDB', level: 80 },
+      { name: 'Redis', level: 75 },
+      { name: 'MySQL', level: 80 },
+    ],
+  },
+  {
+    title: 'DevOps & Cloud',
+    skills: [
+      { name: 'Docker', level: 80 },
+      { name: 'Azure', level: 75 },
+      { name: 'CI/CD', level: 85 },
       { name: 'Git', level: 90 },
-      { name: 'MATLAB', level: 65 },
-      { name: 'Windows', level: 90 },
-      { name: 'Linux', level: 80 },
-      { name: 'Azure', level: 70 },
+      { name: 'Bitbucket', level: 85 },
     ],
   },
   {
-    title: 'DevOps & Databases',
+    title: 'Tools & Technologies',
     skills: [
-      { name: 'CI/CD Pipelines', level: 80 },
-      { name: 'GitHub Actions', level: 75 },
-      { name: 'Docker (Basic)', level: 60 },
-      { name: 'Postgres DB', level: 85 },
-      { name: 'SQLite', level: 80 },
-      { name: 'Redis', level: 70 },
-    ],
-  },
-  {
-    title: 'Other',
-    skills: [
-      { name: 'System Design', level: 75 },
-      { name: 'Open Source Software (OSS)', level: 80 },
+      { name: 'Kubernetes', level: 75 },
+      { name: 'Jenkins', level: 80 },
+      { name: 'JIRA', level: 85 },
+      { name: 'Agile', level: 85 },
+      { name: 'Scrum', level: 80 },
+      { name: 'Test-Driven Development', level: 75 },
     ],
   },
 ];
@@ -70,13 +79,13 @@ export const SkillsSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((category, categoryIndex) => (
             <div 
               key={category.title}
               className={cn(
                 "reveal-on-scroll",
-                categoryIndex === 1 ? "delay-200" : categoryIndex === 2 ? "delay-400" : ""
+                categoryIndex % 3 === 1 ? "delay-100" : categoryIndex % 3 === 2 ? "delay-200" : ""
               )}
             >
               <Card className="h-full border border-border/60">
@@ -107,7 +116,7 @@ export const SkillsSection = () => {
         
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 reveal-on-scroll delay-200">
           <Card className="text-center p-8 bg-secondary/50 border border-border/40">
-            <h4 className="font-display text-4xl font-bold text-primary mb-2">2+</h4>
+            <h4 className="font-display text-4xl font-bold text-primary mb-2">1.6+</h4>
             <p className="text-muted-foreground text-sm">Years Experience</p>
           </Card>
           
@@ -117,13 +126,13 @@ export const SkillsSection = () => {
           </Card>
           
           <Card className="text-center p-8 bg-secondary/50 border border-border/40">
-            <h4 className="font-display text-4xl font-bold text-primary mb-2">15+</h4>
-            <p className="text-muted-foreground text-sm">Happy Clients</p>
+            <h4 className="font-display text-4xl font-bold text-primary mb-2">91</h4>
+            <p className="text-muted-foreground text-sm">Global CodeChef Rank</p>
           </Card>
           
           <Card className="text-center p-8 bg-secondary/50 border border-border/40">
-            <h4 className="font-display text-4xl font-bold text-primary mb-2">5+</h4>
-            <p className="text-muted-foreground text-sm">Open Source Contributions</p>
+            <h4 className="font-display text-4xl font-bold text-primary mb-2">€870K</h4>
+            <p className="text-muted-foreground text-sm">Savings Generated</p>
           </Card>
         </div>
       </div>

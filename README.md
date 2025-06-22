@@ -113,4 +113,4 @@ For any inquiries, feel free to reach out:
 
 - **Email**: gauravupadhayay9801@gmail.com
 - **GitHub**: [grajrb](https://github.com/grajrb)
-- **LinkedIn**: [Gaurav Raj](https://www.linkedin.com/in/gaurav-raj-095a8a129/)
+- **LinkedIn**: [Gaurav Raj](https://www.linkedin.com/in/gaurav-raj1/)

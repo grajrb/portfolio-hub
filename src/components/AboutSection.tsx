@@ -10,28 +10,23 @@ export const AboutSection = () => {
           <div className="reveal-on-scroll">
             <h2 className="section-title">
               About <span className="text-primary">Me</span>
-            </h2>
-
-            <p className="section-subtitle">
-              A passionate full-stack developer with a keen eye for design and a commitment to creating seamless user experiences.
-            </p>
-
-            <div className="prose prose-lg max-w-none text-muted-foreground mb-8">
+            </h2>            <p className="section-subtitle">
+              Software Engineer at Bosch Global Software Technologies with expertise in full stack development and DevOps practices.
+            </p><div className="prose prose-lg max-w-none text-muted-foreground mb-8">
               <p>
-                I specialize in building modern web applications using React, TypeScript, and Node.js. My approach to development combines technical excellence with a deep understanding of user needs.
+                I am a skilled software engineer with experience in designing, developing, and deploying full-stack applications using modern JavaScript technologies including TypeScript, Node.js, and React.js.
               </p>
               <p>
-                With experience across the entire development stack, I enjoy tackling complex problems and transforming ideas into elegant, functional solutions. Whether working on the frontend or backend, I prioritize clean code, performance, and accessibility.
+                My expertise includes developing web applications, automating workflows, and implementing DevOps practices. I have hands-on experience with Docker, CI/CD pipelines, and cloud-native technologies. I am proficient in Git, GitHub Actions, and have a strong understanding of system design principles.
               </p>
               <p>
-                When not coding, I'm likely exploring new technologies, contributing to open source, or sharing knowledge through writing and mentoring.
+                I am a 3-star coder on CodeChef and have achieved a rank of 91 in the CodeChef Long Challenge. I continuously improve my skills through problem-solving and technical challenges.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4 mb-8">
-              <a
+            <div className="flex flex-wrap gap-4 mb-8">              <a
                 className="button button-hover-effect group"
-                href="https://drive.google.com/file/d/1IhcDMgjX8ULmISPSpkidiMYeX7-2fD8Z/view?usp=sharing"
+                href="https://drive.google.com/file/d/1tgTLeAkjkJ_Jz5-_OEZxZ6UCVw0xaH4n/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -49,7 +44,7 @@ export const AboutSection = () => {
               </a>
               <a
                 className="button button-outline button-hover-effect"
-                href="https://www.linkedin.com/in/gaurav-raj-095a8a129/"
+                href="https://www.linkedin.com/in/gaurav-raj1/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -74,40 +69,39 @@ export const AboutSection = () => {
           <div className="reveal-on-scroll delay-200">
             <h3 className="font-display text-2xl font-bold mb-6">Experience</h3>
 
-            <div className="space-y-8">
-              {/* Associate Software Engineer */}
+            <div className="space-y-8">              {/* Software Engineer */}
               <div className="relative pl-8 border-l border-border/60">
                 <div className="absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-primary"></div>
                 <div className="mb-2">
-                  <h4 className="font-semibold">Associate Software Engineer</h4>
-                  <p className="text-sm text-muted-foreground">Bosch • 2 Years</p>
+                  <h4 className="font-semibold">Software Engineer</h4>
+                  <p className="text-sm text-muted-foreground">Bosch Global Software Technologies • January 2024 – Present</p>
                 </div>
                 <p className="text-muted-foreground">
-                  Created applications to optimize developer response times and improve workflows. Gained expertise in:
+                  Coimbatore, Tamil Nadu
                 </p>
                 <ul className="list-disc pl-6 text-muted-foreground">
-                  <li>C, C++, JavaScript, Linux</li>
-                  <li>DevOps (CI/CD, Jenkins, SonarQube, Trivy Scanning)</li>
-                  <li>Docker Hub, Docker, Kubernetes, OpenShift</li>
-                  <li>Jira Cloud, Git, GitHub (Branching Strategy, Rebase, Stash, GitHub Actions)</li>
-                  <li>TypeScript, Node.js, Electron.js, React.js</li>
-                  <li>Python (Advanced), CMake, MSYS2, GCC</li>
-                  <li>Web Development (Django, Swagger API, FastAPI, Celery)</li>
-                  <li>Postgres DB, SQLite, Redis</li>
-                  <li>System Design and Open Source Software (OSS)</li>
+                  <li>Architected full-stack automation tools using Node.js/React.js, reducing manual effort by 20%.</li>
+                  <li>Designed responsive Employee portal with React.js, improving user engagement and experience.</li>
+                  <li>Led VS Code migration as Product Owner, achieving 26% adoption and €870K savings.</li>
+                  <li>Facilitated Visual Studio to VS Code transition, targeting €5M annual optimization.</li>
+                  <li>Enhanced PostgreSQL/Redis performance through optimization, achieving 25% faster API responses.</li>
+                  <li>Implemented CI/CD pipelines with Docker, reducing deployment time by 80%.</li>
                 </ul>
               </div>
-
-              {/* Full Stack Developer (Intern) */}
+                {/* Full Stack Developer (Intern) */}
               <div className="relative pl-8 border-l border-border/60">
                 <div className="absolute left-[-8px] top-0 w-4 h-4 rounded-full bg-primary"></div>
                 <div className="mb-2">
                   <h4 className="font-semibold">Full Stack Developer (Intern)</h4>
-                  <p className="text-sm text-muted-foreground">HighRadius</p>
+                  <p className="text-sm text-muted-foreground">HighRadius Technologies • January 2022 – April 2022</p>
                 </div>
                 <p className="text-muted-foreground">
-                  Built fintech B2B cloud apps with end-to-end integration of UI components, data models, and ML systems.
+                  Bhubaneswar, India
                 </p>
+                <ul className="list-disc pl-6 text-muted-foreground">
+                  <li>Engineered RESTful APIs for B2B fintech platform using Node.js/Express.js, achieving 25% faster response times.</li>
+                  <li>Implemented RBAC system for 5 user roles using JavaScript/Bootstrap, ensuring secure access control.</li>
+                </ul>
               </div>
             </div>
           </div>

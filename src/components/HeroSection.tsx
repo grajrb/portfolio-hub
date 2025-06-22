@@ -14,18 +14,17 @@ export const HeroSection = () => {
       <div className="container max-w-6xl mx-auto px-6 pt-20">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
           {/* Left Content */}
-          <div className="lg:col-span-3 animate-fade-in">
-            <p className="inline-block py-1 px-3 bg-secondary text-foreground text-sm rounded-full mb-6 font-medium">
-              Full Stack Developer
+          <div className="lg:col-span-3 animate-fade-in">            <p className="inline-block py-1 px-3 bg-secondary text-foreground text-sm rounded-full mb-6 font-medium">
+          Software Engineer
             </p>
 
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 text-balance">
-              <span className="text-balance">Crafting Digital Experiences with</span>
-              <span className="text-primary"> Precision & Purpose</span>
+              <span className="text-balance">Hi, I'm</span>
+              <span className="text-primary"> Gaurav Raj</span>
             </h1>
 
             <p className="text-xl text-muted-foreground mb-8 max-w-xl text-balance">
-              I'm a full-stack developer focused on building products that are functionally elegant and beautifully crafted.
+              A full-stack developer with expertise in DevOps practices, dedicated to developing efficient software solutions and automating workflows.
             </p>
 
             <div className="flex flex-wrap gap-4">

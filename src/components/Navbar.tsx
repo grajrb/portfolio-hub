@@ -48,12 +48,9 @@ export const Navbar = () => {
         isScrolled ? "py-3 glass" : "py-5 bg-transparent"
       )}
     >
-      <div className="container max-w-6xl mx-auto px-6 flex items-center justify-between">
-        <a href="#home" className="font-display text-xl font-bold relative z-10">
-          Portfolio
-        </a>
-
-        {/* Desktop Navigation */}
+      <div className="container max-w-6xl mx-auto px-6 flex items-center justify-between">        <a href="#home" className="font-display text-xl font-bold relative z-10">
+          Gaurav Raj
+        </a>        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
             <a
@@ -81,7 +78,7 @@ export const Navbar = () => {
             </Button>
           </a>
           <a
-            href="https://www.linkedin.com/in/gaurav-raj-095a8a129/"
+            href="https://www.linkedin.com/in/gaurav-raj1/"
             target="_blank"
             rel="noopener noreferrer"
             className="button-hover-effect"
@@ -92,7 +89,20 @@ export const Navbar = () => {
             </Button>
           </a>
           <a
-            href="https://drive.google.com/file/d/1IhcDMgjX8ULmISPSpkidiMYeX7-2fD8Z/view?usp=sharing"
+            href="https://leetcode.com/graj_rb/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="button-hover-effect"
+          >
+            <Button size="icon" variant="ghost">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+                <path d="m14.5 15 3 3 3-3"/>
+              </svg>
+              <span className="sr-only">LeetCode</span>
+            </Button>
+          </a>          <a
+            href="https://drive.google.com/file/d/1tgTLeAkjkJ_Jz5-_OEZxZ6UCVw0xaH4n/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="button-hover-effect"
@@ -133,9 +143,8 @@ export const Navbar = () => {
             >
               {link.name}
             </a>
-          ))}
-          <a
-            href="https://github.com/grajrb-github"
+          ))}          <a
+            href="https://github.com/grajrb"
             target="_blank"
             rel="noopener noreferrer"
             className="button-hover-effect"
@@ -146,7 +155,7 @@ export const Navbar = () => {
             </Button>
           </a>
           <a
-            href="https://www.linkedin.com/in/gaurav-raj-095a8a129/"
+            href="https://www.linkedin.com/in/gaurav-raj1/"
             target="_blank"
             rel="noopener noreferrer"
             className="button-hover-effect"
@@ -154,6 +163,20 @@ export const Navbar = () => {
             <Button size="icon" variant="ghost">
               <Linkedin size={20} />
               <span className="sr-only">LinkedIn</span>
+            </Button>
+          </a>
+          <a
+            href="https://leetcode.com/graj_rb/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="button-hover-effect"
+          >
+            <Button size="icon" variant="ghost">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+                <path d="m14.5 15 3 3 3-3"/>
+              </svg>
+              <span className="sr-only">LeetCode</span>
             </Button>
           </a>
           <Button

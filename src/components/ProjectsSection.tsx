@@ -1,37 +1,57 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowUpRight, Github, Mail, Phone, MapPin, Linkedin } from 'lucide-react';
+import { ArrowUpRight, Github, Mail, Phone, MapPin, Linkedin, ExternalLink } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const projects = [
   {
     id: 1,
-    title: 'Modern E-commerce Platform',
-    description: 'A full-featured online store built with React, Node.js, and MongoDB. Includes user authentication, product management, and payment processing.',
-    tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-    githubUrl: 'https://github.com/grajrb/EzCommerce',
+    title: 'Event Booking System',
+    description: 'A modern full-stack app for browsing, booking, and managing events with real-time updates and admin features.',
+    tags: ['TypeScript', 'React', 'Node.js', 'MongoDB'],
+    githubUrl: 'https://github.com/grajrb/EventBookingSystem',
   },
   {
     id: 2,
-    title: 'Task Management Dashboard',
-    description: 'An intuitive project management tool with drag-and-drop task organization, team collaboration features, and real-time updates.',
-    tags: ['React', 'TypeScript', 'Firebase', 'Tailwind CSS'],
-    githubUrl: 'https://github.com/grajrb/Dashboard-Application',
+    title: 'CryptoChatSphere',
+    description: 'A modern decentralized messaging application that combines traditional chat functionality with Web3 capabilities, allowing users to connect their crypto wallets.',
+    tags: ['TypeScript', 'React', 'Web3', 'Blockchain'],
+    githubUrl: 'https://github.com/grajrb/crypto-chat-sphere',
   },
   {
     id: 3,
-    title: 'Product-Recommendation Engine',
-    description: 'This is a recommendation model which aims to provide the best combos of items. These combos of items can be used by the shop to provide any offers on them if brought together, so that the shop can make profits from it. It is a Market Basket Analysis using Apriori Algorithm',
-    tags: ['React', 'Redux', 'Node.js', 'Chart.js'],
-    githubUrl: 'https://github.com/grajrb/Product-Recommendation-Engine',
+    title: 'EzCommerce',
+    description: 'A full-stack e-commerce platform built with the MERN stack featuring user authentication, product management, shopping cart, and order processing.',
+    tags: ['JavaScript', 'React', 'Node.js', 'MongoDB'],
+    githubUrl: 'https://github.com/grajrb/EzCommerce',
+  },  {
+    id: 4,
+    title: 'ProSyncHub',
+    description: 'A collaborative project management tool with real-time synchronization and team collaboration features.',
+    tags: ['TypeScript', 'React', 'Firebase', 'Tailwind CSS'],
+    githubUrl: 'https://github.com/grajrb/ProSyncHub',
   },
   {
-    id: 4,
-    title: 'Weather Forecast App',
-    description: 'A sleek weather application providing current conditions and forecasts. Includes location detection, saved locations, and detailed weather metrics.',
-    tags: ['React', 'Weather API', 'Geolocation', 'CSS Animations'],
-    githubUrl: 'https://github.com/grajrb/Weather-API',
+    id: 5,
+    title: 'SecureAuthHub',
+    description: 'A comprehensive authentication system with multi-factor authentication, OAuth integration, and advanced security features.',
+    tags: ['TypeScript', 'React', 'Node.js', 'Security'],
+    githubUrl: 'https://github.com/grajrb/SecureAuthHub',
+  },
+  {
+    id: 7,
+    title: 'NewsContextGPT',
+    description: 'An AI-powered news analysis tool that provides context and insights for current news articles.',
+    tags: ['TypeScript', 'React', 'OpenAI', 'News API'],
+    githubUrl: 'https://github.com/grajrb/NewsContextGPT',
+  },
+  {
+    id: 8,
+    title: 'Task Management with Blockchain Rewards',
+    description: 'Manage your tasks efficiently and earn token rewards for your productivity. Combines task management with blockchain incentives.',
+    tags: ['TypeScript', 'React', 'Blockchain', 'Smart Contracts'],
+    githubUrl: 'https://github.com/grajrb/Task-Management',
   },
 ];
 
@@ -41,22 +61,19 @@ export const ProjectsSection = () => {
   return (
     <section id="projects" className="py-24 md:py-32 bg-secondary/50">
       <div className="container max-w-6xl mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
-          <h2 className="section-title">
-            Featured <span className="text-primary">Projects</span>
+        <div className="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">          <h2 className="section-title">
+            My <span className="text-primary">Projects</span>
           </h2>
           <p className="section-subtitle mx-auto">
-            A selection of my recent work showcasing my skills and experience in building digital products.
+            A showcase of my development work, featuring full-stack applications, web3 technologies, and AI integrations.
           </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        </div>        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <div
               key={project.id}
               className={cn(
                 "reveal-on-scroll",
-                index % 2 === 1 ? "delay-200" : ""
+                index % 3 === 1 ? "delay-100" : index % 3 === 2 ? "delay-200" : ""
               )}
             >
               <Card
@@ -99,16 +116,15 @@ export const ProjectsSection = () => {
               </Card>
             </div>
           ))}
-        </div>
-
-        <div className="mt-12 text-center reveal-on-scroll">
+        </div>        <div className="mt-12 text-center reveal-on-scroll">
           <a
             className="button-hover-effect inline-flex items-center justify-center px-6 py-3 border border-border/60 rounded text-lg font-medium hover:shadow-lg transition-all duration-300"
             href="https://github.com/grajrb?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
           >
-            View All Projects
+            <Github size={18} className="mr-2" />
+            View More Projects
           </a>
         </div>
 
@@ -161,9 +177,8 @@ export const ProjectsSection = () => {
                   >
                     <Github size={16} className="mr-1" />
                     GitHub
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/gaurav-raj-095a8a129/"
+                  </a>                  <a
+                    href="https://www.linkedin.com/in/gaurav-raj1/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="button-hover-effect inline-flex items-center justify-center px-4 py-2 border border-border/60 rounded text-sm font-medium hover:shadow-lg transition-all duration-300"
