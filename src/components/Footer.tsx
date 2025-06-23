@@ -60,11 +60,11 @@ export const Footer = () => {
           
           <div>
             <h3 className="font-display text-lg font-semibold mb-4">Navigation</h3>            <nav className="flex flex-col space-y-3">
-              <a href="#/" className="text-muted-foreground hover:text-foreground transition-colors">Home</a>
-              <a href="#/#about" className="text-muted-foreground hover:text-foreground transition-colors">About</a>
-              <a href="#/#projects" className="text-muted-foreground hover:text-foreground transition-colors">Projects</a>
-              <a href="#/#skills" className="text-muted-foreground hover:text-foreground transition-colors">Skills</a>
-              <a href="#/#contact" className="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+              <a href="#home" className="text-muted-foreground hover:text-foreground transition-colors">Home</a>
+              <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">About</a>
+              <a href="#projects" className="text-muted-foreground hover:text-foreground transition-colors">Projects</a>
+              <a href="#skills" className="text-muted-foreground hover:text-foreground transition-colors">Skills</a>
+              <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
             </nav>
           </div>
           

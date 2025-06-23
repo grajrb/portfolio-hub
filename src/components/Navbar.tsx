@@ -4,11 +4,11 @@ import { Button } from '@/components/ui/button';
 import { Menu, X, Github, Linkedin } from 'lucide-react';
 
 const navLinks = [
-  { name: 'Home', href: '#/' },
-  { name: 'About', href: '#/#about' },
-  { name: 'Projects', href: '#/#projects' },
-  { name: 'Skills', href: '#/#skills' },
-  { name: 'Contact', href: '#/#contact' },
+  { name: 'Home', href: '#home' },
+  { name: 'About', href: '#about' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Contact', href: '#contact' },
 ];
 
 export const Navbar = () => {
@@ -47,17 +47,16 @@ export const Navbar = () => {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled ? "py-3 glass" : "py-5 bg-transparent"
       )}
-    >      <div className="container max-w-6xl mx-auto px-6 flex items-center justify-between">        <a href="#/" className="font-display text-xl font-bold relative z-10">
+    >      <div className="container max-w-6xl mx-auto px-6 flex items-center justify-between">        <a href="#home" className="font-display text-xl font-bold relative z-10">
           Gaurav Raj
         </a>{/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
             <a
               key={link.name}
-              href={link.href}
-              className={cn(
-                "text-sm font-medium transition-colors",                activeSection === link.href.substring(link.href.lastIndexOf('#') + 1) || 
-                (activeSection === 'home' && link.href === '#/')
+              href={link.href}              className={cn(
+                "text-sm font-medium transition-colors",
+                activeSection === link.href.substring(1)
                   ? "text-primary link-hover-effect"
                   : "text-muted-foreground hover:text-foreground link-hover-effect"
               )}
@@ -133,8 +132,7 @@ export const Navbar = () => {
               key={link.name}
               href={link.href}
               className={cn(
-                "text-lg font-medium transition-colors",
-                activeSection === link.href.substring(1)
+                "text-lg font-medium transition-colors",                activeSection === link.href.substring(1)
                   ? "text-primary"
                   : "text-muted-foreground hover:text-foreground"
               )}
