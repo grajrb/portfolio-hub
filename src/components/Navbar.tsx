@@ -16,6 +16,19 @@ export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
+  // Add a scroll function to handle navigation
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const targetSection = document.getElementById(targetId);
+    if (targetSection) {
+      window.scrollTo({
+        top: targetSection.offsetTop,
+        behavior: 'smooth'
+      });
+      setActiveSection(targetId);
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -46,15 +59,18 @@ export const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled ? "py-3 glass" : "py-5 bg-transparent"
-      )}
-    >      <div className="container max-w-6xl mx-auto px-6 flex items-center justify-between">        <a href="#home" className="font-display text-xl font-bold relative z-10">
+      )}    >      <div className="container max-w-6xl mx-auto px-6 flex items-center justify-between">        <a 
+          href="#home" 
+          onClick={(e) => handleNavClick(e, 'home')}
+          className="font-display text-xl font-bold relative z-10">
           Gaurav Raj
         </a>{/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <a
+          {navLinks.map((link) => (            <a
               key={link.name}
-              href={link.href}              className={cn(
+              href={link.href}
+              onClick={(e) => handleNavClick(e, link.href.substring(1))}
+              className={cn(
                 "text-sm font-medium transition-colors",
                 activeSection === link.href.substring(1)
                   ? "text-primary link-hover-effect"
@@ -130,13 +146,15 @@ export const Navbar = () => {
           {navLinks.map((link) => (
             <a
               key={link.name}
-              href={link.href}
-              className={cn(
-                "text-lg font-medium transition-colors",                activeSection === link.href.substring(1)
+              href={link.href}              className={cn(                "text-lg font-medium transition-colors",                
+                activeSection === link.href.substring(1)
                   ? "text-primary"
                   : "text-muted-foreground hover:text-foreground"
               )}
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => {
+                handleNavClick(e, link.href.substring(1));
+                setMobileMenuOpen(false);
+              }}
             >
               {link.name}
             </a>

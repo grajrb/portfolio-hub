@@ -3,6 +3,18 @@ import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Mail } from 'lucide-react';
 
 export const Footer = () => {
+  // Add a scroll function to handle navigation
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const targetSection = document.getElementById(targetId);
+    if (targetSection) {
+      window.scrollTo({
+        top: targetSection.offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <footer className="bg-secondary py-12 border-t border-border">
       <div className="container max-w-6xl mx-auto px-6">
@@ -60,11 +72,11 @@ export const Footer = () => {
           
           <div>
             <h3 className="font-display text-lg font-semibold mb-4">Navigation</h3>            <nav className="flex flex-col space-y-3">
-              <a href="#home" className="text-muted-foreground hover:text-foreground transition-colors">Home</a>
-              <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors">About</a>
-              <a href="#projects" className="text-muted-foreground hover:text-foreground transition-colors">Projects</a>
-              <a href="#skills" className="text-muted-foreground hover:text-foreground transition-colors">Skills</a>
-              <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+              <a href="#home" className="text-muted-foreground hover:text-foreground transition-colors" onClick={(e) => handleNavClick(e, 'home')}>Home</a>
+              <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors" onClick={(e) => handleNavClick(e, 'about')}>About</a>
+              <a href="#projects" className="text-muted-foreground hover:text-foreground transition-colors" onClick={(e) => handleNavClick(e, 'projects')}>Projects</a>
+              <a href="#skills" className="text-muted-foreground hover:text-foreground transition-colors" onClick={(e) => handleNavClick(e, 'skills')}>Skills</a>
+              <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors" onClick={(e) => handleNavClick(e, 'contact')}>Contact</a>
             </nav>
           </div>
           

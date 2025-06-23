@@ -53,20 +53,16 @@ export const HeroSection = () => {
                   Contact Me
                 </a>
               </Button>
-            </div>          </div>          {/* Right Content with video */}
+            </div>
+          </div>          {/* Right Content (removed video) */}
           <div className="lg:col-span-2 flex justify-center animate-slide-in-right hidden lg:block">
             <div className="w-full max-w-md">
-              {/* Video from Asset folder */}
-              <video 
-                className="w-full h-auto rounded-lg shadow-lg" 
-                autoPlay 
-                loop 
-                muted 
-                playsInline
-                src="/Asset/Java developer.mp4"
-              >
-                Your browser does not support the video tag.
-              </video>
+              {/* Video removed */}
+              <div className="w-full h-auto flex items-center justify-center rounded-lg bg-secondary/30 p-6 min-h-[300px]">
+                <p className="text-lg text-center text-muted-foreground">
+                  Building innovative solutions with modern technologies
+                </p>
+              </div>
             </div>
           </div>
         </div>
