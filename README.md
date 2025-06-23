@@ -1,4 +1,4 @@
-# Portfolio Hub 360
+# Portfolio Hub
 
 A modern, responsive portfolio website built with cutting-edge technologies to showcase your skills, projects, and experience.
 
