@@ -116,7 +116,7 @@ export const Navbar = () => {
               <span className="sr-only">LeetCode</span>
             </Button>
           </a>          <a
-            href="https://drive.google.com/file/d/1tgTLeAkjkJ_Jz5-_OEZxZ6UCVw0xaH4n/view?usp=sharing"
+            href="https://drive.google.com/file/d/1kowYe17m9lnPk-lsaAWMGX4FFrsqh0ZZ/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="button-hover-effect"
@@ -193,13 +193,14 @@ export const Navbar = () => {
               </svg>
               <span className="sr-only">LeetCode</span>
             </Button>
-          </a>
-          <Button
-            className="mt-4 w-full button-hover-effect"
-            onClick={() => setMobileMenuOpen(false)}
+          </a>          <a
+            href="https://drive.google.com/file/d/1kowYe17m9lnPk-lsaAWMGX4FFrsqh0ZZ/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full button-hover-effect"
           >
-            Resume
-          </Button>
+            <Button className="mt-4 w-full">Resume</Button>
+          </a>
         </nav>
       </div>
     </header>
