@@ -26,7 +26,7 @@ export const AboutSection = () => {
 
             <div className="flex flex-wrap gap-4 mb-8">              <a
                 className="button button-hover-effect group"
-                href="https://drive.google.com/file/d/1tgTLeAkjkJ_Jz5-_OEZxZ6UCVw0xaH4n/view?usp=sharing"
+                href="https://drive.google.com/file/d/1kowYe17m9lnPk-lsaAWMGX4FFrsqh0ZZ/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
               >
