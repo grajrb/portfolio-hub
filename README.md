@@ -1,4 +1,4 @@
-# Portfolio Hub 360
+# Portfolio Hub
 
 A modern, responsive portfolio website built with cutting-edge technologies to showcase your skills, projects, and experience.
 
@@ -33,14 +33,13 @@ Ensure you have the following installed:
 ### Installation
 
 1. Clone the repository:
-
+   
    ```bash
-   git clone https://github.com/grajrb/portfolio-hub-360.git
-   cd portfolio-hub-360
+   git clone https://github.com/grajrb/portfolio-hub.git
+   cd portfolio-hub
    ```
-
-2. Install dependencies:
-
+1. Install dependencies:
+   
    ```bash
    npm install
    ```
@@ -72,7 +71,7 @@ npm run preview
 ## Folder Structure
 
 ```
-portfolio-hub-360/
+portfolio-hub/
 ├── src/                # Source code
 │   ├── components/     # Reusable React components
 │   ├── pages/          # Page components
@@ -97,11 +96,9 @@ portfolio-hub-360/
 Contributions are welcome! Please follow these steps:
 
 1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Commit your changes and push the branch.
-4. Submit a pull request.
-
-## License
+1. Create a new branch for your feature or bug fix.
+1. Commit your changes and push the branch.
+1. Submit a pull request.
 
 ## License
 
