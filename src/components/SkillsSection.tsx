@@ -116,7 +116,7 @@ export const SkillsSection = () => {
         
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 reveal-on-scroll delay-200">
           <Card className="text-center p-8 bg-secondary/50 border border-border/40">
-            <h4 className="font-display text-4xl font-bold text-primary mb-2">1.6+</h4>
+            <h4 className="font-display text-4xl font-bold text-primary mb-2">1.7+</h4>
             <p className="text-muted-foreground text-sm">Years Experience</p>
           </Card>
           

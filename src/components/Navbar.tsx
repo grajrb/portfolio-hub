@@ -116,7 +116,7 @@ export const Navbar = () => {
               <span className="sr-only">LeetCode</span>
             </Button>
           </a>          <a
-            href="https://drive.google.com/file/d/1kowYe17m9lnPk-lsaAWMGX4FFrsqh0ZZ/view?usp=sharing"
+            href="https://drive.google.com/file/d/1XQSmRdVuVP5S4k4TFD9TO9hQ6G9xuK6Q/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="button-hover-effect"
@@ -194,7 +194,7 @@ export const Navbar = () => {
               <span className="sr-only">LeetCode</span>
             </Button>
           </a>          <a
-            href="https://drive.google.com/file/d/1kowYe17m9lnPk-lsaAWMGX4FFrsqh0ZZ/view?usp=sharing"
+            href="https://drive.google.com/file/d/1XQSmRdVuVP5S4k4TFD9TO9hQ6G9xuK6Q/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full button-hover-effect"
