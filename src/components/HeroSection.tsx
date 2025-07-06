@@ -59,11 +59,7 @@ export const HeroSection = () => {
             <div className="w-full max-w-md">
               {/* Video removed */}
               <div className="w-full h-auto flex items-center justify-center rounded-lg bg-secondary/30 p-6 min-h-[300px]">
-                <img
-                  src="/Asset/2842680.jpg"
-                  alt="Hero Section Visual"
-                  className="max-h-72 rounded-lg object-cover shadow-lg"
-                />
+                {/* Right content intentionally left empty */}
               </div>
             </div>
           </div>
