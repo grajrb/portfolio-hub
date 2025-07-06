@@ -44,25 +44,14 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@700;900&display=swap" rel="stylesheet" />
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#6366f1">
   </head>
-
   <body>
     <div id="root"></div>
-    <section className="bg-white text-black dark:bg-gray-900 dark:text-white">
-    </section>
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
-    <script type="module">
-      useEffect(() => {
-        if (theme === 'dark') {
-          document.documentElement.classList.add('dark'); // Adds the 'dark' class to <html>
-        } else {
-          document.documentElement.classList.remove('dark'); // Removes the 'dark' class from <html>
-        }
-        localStorage.setItem('theme', theme); // Save the theme preference
-      }, [theme]);
-    </script>
   </body>
 </html>

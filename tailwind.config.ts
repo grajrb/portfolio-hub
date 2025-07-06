@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
 
@@ -27,24 +26,24 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					DEFAULT: '#6366f1', // Indigo-500
+					foreground: '#fff',
 				},
 				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
+					DEFAULT: '#f3f4f6', // Gray-100
+					foreground: '#111827',
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
 				},
 				muted: {
-					DEFAULT: 'hsl(var(--muted))',
-					foreground: 'hsl(var(--muted-foreground))'
+					DEFAULT: '#e5e7eb', // Gray-200
+					foreground: '#6b7280',
 				},
 				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
+					DEFAULT: '#f59e42', // Orange-400
+					foreground: '#fff',
 				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
@@ -63,16 +62,34 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				'dark-bg': '#18181b',
+				'light-bg': '#f9fafb',
+				'card-bg': '#fff',
+				'card-dark-bg': '#23272f',
 			},
 			fontFamily: {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
-				display: ['SF Pro Display', 'Inter', 'system-ui', 'sans-serif'],
+				display: ['Montserrat', 'Inter', 'system-ui', 'sans-serif'],
+			},
+			fontSize: {
+				base: ['1rem', { lineHeight: '1.75' }],
+				sm: ['0.95rem', { lineHeight: '1.7' }],
+				lg: ['1.125rem', { lineHeight: '1.8' }],
+				xl: ['1.25rem', { lineHeight: '1.8' }],
+				'2xl': ['1.5rem', { lineHeight: '1.2' }],
+				'3xl': ['1.875rem', { lineHeight: '1.15' }],
+				'4xl': ['2.25rem', { lineHeight: '1.1' }],
+				'5xl': ['3rem', { lineHeight: '1.05' }],
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				lg: '1.25rem',
+				md: '0.75rem',
+				sm: '0.5rem',
+			},
+			boxShadow: {
+				'soft': '0 4px 24px 0 rgba(0,0,0,0.08)',
+				'card': '0 2px 12px 0 rgba(0,0,0,0.06)',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -104,8 +121,12 @@ export default {
 					'100%': { transform: 'scale(1)', opacity: '1' }
 				},
 				'reveal': {
-					'0%': { transform: 'translateY(20px)', opacity: '0' },
+					'0%': { transform: 'translateY(40px)', opacity: '0' },
 					'100%': { transform: 'translateY(0)', opacity: '1' }
+				},
+				'underline': {
+					'0%': { width: '0%' },
+					'100%': { width: '100%' }
 				}
 			},
 			animation: {
@@ -116,9 +137,10 @@ export default {
 				'slide-in': 'slide-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
 				'slide-in-right': 'slide-in-right 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
 				'scale-in': 'scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-				'reveal': 'reveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards'
-			}
-			}
+				'reveal': 'reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both',
+				'underline': 'underline 0.3s ease-in-out',
+			},
 		},
-		plugins: [tailwindcssAnimate],
+	},
+	plugins: [tailwindcssAnimate],
 } satisfies Config;

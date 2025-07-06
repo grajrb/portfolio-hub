@@ -16,30 +16,35 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="bg-secondary py-12 border-t border-border">
+    <footer className="bg-black text-white py-14 shadow-2xl rounded-t-3xl" aria-label="Site Footer">
       <div className="container max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>            <h3 className="font-display text-xl font-bold mb-4">Gaurav Raj</h3>
-            <p className="text-muted-foreground mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div>
+            <h3 className="font-display text-2xl font-extrabold mb-4 tracking-tight">Gaurav Raj</h3>
+            <p className="text-gray-400 mb-6 leading-relaxed text-base md:text-lg">
               Software Engineer specializing in full-stack development and DevOps.
-            </p>            <div className="flex space-x-4">
+            </p>
+            <nav className="flex space-x-4 mt-2" aria-label="Social media">
               <a
                 href="https://github.com/grajrb"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full hover:text-primary hover:bg-primary/10"
+                aria-label="GitHub"
+                className="rounded-full focus:outline-none focus:ring-2 focus:ring-primary/70 transition-colors hover:text-primary hover:bg-white/10 shadow-md"
               >
-                <Button size="icon" variant="ghost">
+                <Button size="icon" variant="ghost" className="text-white">
                   <Github size={20} />
                   <span className="sr-only">GitHub</span>
                 </Button>
-              </a>              <a
+              </a>
+              <a
                 href="https://www.linkedin.com/in/gaurav-raj1/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full hover:text-primary hover:bg-primary/10"
+                aria-label="LinkedIn"
+                className="rounded-full focus:outline-none focus:ring-2 focus:ring-primary/70 transition-colors hover:text-primary hover:bg-white/10 shadow-md"
               >
-                <Button size="icon" variant="ghost">
+                <Button size="icon" variant="ghost" className="text-white">
                   <Linkedin size={20} />
                   <span className="sr-only">LinkedIn</span>
                 </Button>
@@ -48,9 +53,10 @@ export const Footer = () => {
                 href="https://leetcode.com/graj_rb/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full hover:text-primary hover:bg-primary/10"
+                aria-label="LeetCode"
+                className="rounded-full focus:outline-none focus:ring-2 focus:ring-primary/70 transition-colors hover:text-primary hover:bg-white/10 shadow-md"
               >
-                <Button size="icon" variant="ghost">
+                <Button size="icon" variant="ghost" className="text-white">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
                     <path d="m14.5 15 3 3 3-3"/>
@@ -60,48 +66,67 @@ export const Footer = () => {
               </a>
               <a
                 href="mailto:gauravupadhayay9801@gmail.com"
-                className="rounded-full hover:text-primary hover:bg-primary/10"
+                aria-label="Email"
+                className="rounded-full focus:outline-none focus:ring-2 focus:ring-primary/70 transition-colors hover:text-primary hover:bg-white/10 shadow-md"
               >
-                <Button size="icon" variant="ghost">
+                <Button size="icon" variant="ghost" className="text-white">
                   <Mail size={20} />
                   <span className="sr-only">Email</span>
                 </Button>
               </a>
-            </div>
-          </div>
-          
-          <div>
-            <h3 className="font-display text-lg font-semibold mb-4">Navigation</h3>            <nav className="flex flex-col space-y-3">
-              <a href="#home" className="text-muted-foreground hover:text-foreground transition-colors" onClick={(e) => handleNavClick(e, 'home')}>Home</a>
-              <a href="#about" className="text-muted-foreground hover:text-foreground transition-colors" onClick={(e) => handleNavClick(e, 'about')}>About</a>
-              <a href="#projects" className="text-muted-foreground hover:text-foreground transition-colors" onClick={(e) => handleNavClick(e, 'projects')}>Projects</a>
-              <a href="#skills" className="text-muted-foreground hover:text-foreground transition-colors" onClick={(e) => handleNavClick(e, 'skills')}>Skills</a>
-              <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors" onClick={(e) => handleNavClick(e, 'contact')}>Contact</a>
             </nav>
           </div>
-          
           <div>
-            <h3 className="font-display text-lg font-semibold mb-4">Contact</h3>            <address className="not-italic text-muted-foreground">
+            <h3 className="font-display text-lg font-semibold mb-4">Navigation</h3>
+            <nav className="flex flex-col space-y-3" aria-label="Footer navigation">
+              <a href="#home" className="text-gray-400 hover:text-white transition-all rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500" onClick={(e) => handleNavClick(e, 'home')}>Home</a>
+              <a href="#about" className="text-gray-400 hover:text-white transition-all rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500" onClick={(e) => handleNavClick(e, 'about')}>About</a>
+              <a href="#projects" className="text-gray-400 hover:text-white transition-all rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500" onClick={(e) => handleNavClick(e, 'projects')}>Projects</a>
+              <a href="#skills" className="text-gray-400 hover:text-white transition-all rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500" onClick={(e) => handleNavClick(e, 'skills')}>Skills</a>
+              <a href="#contact" className="text-gray-400 hover:text-white transition-all rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500" onClick={(e) => handleNavClick(e, 'contact')}>Contact</a>
+              <a href="#blog" className="text-gray-400 hover:text-white transition-all rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500" onClick={(e) => handleNavClick(e, 'blog')}>Blog</a>
+            </nav>
+          </div>
+          <div>
+            <h3 className="font-display text-lg font-semibold mb-4">Contact</h3>
+            <address className="not-italic text-gray-400">
               <p className="mb-2">gauravupadhayay9801@gmail.com</p>
               <p className="mb-2">Coimbatore, Tamil Nadu, India</p>
               <p className="mb-2">+91 7992425448</p>
             </address>
+            <form className="mt-6 flex flex-col gap-3" aria-label="Newsletter signup">
+              <label htmlFor="newsletter-email" className="sr-only">Email address</label>
+              <input
+                id="newsletter-email"
+                type="email"
+                placeholder="Subscribe to newsletter"
+                className="rounded-lg px-4 py-2 bg-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/70 transition-all"
+                aria-label="Email address for newsletter"
+              />
+              <button
+                type="submit"
+                className="bg-primary text-white rounded-lg px-4 py-2 font-semibold shadow-md hover:bg-primary/80 transition-all focus:outline-none focus:ring-2 focus:ring-primary/70"
+                aria-label="Subscribe to newsletter"
+              >
+                Subscribe
+              </button>
+            </form>
           </div>
         </div>
-        
-        <div className="mt-12 pt-6 border-t border-border/60 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-muted-foreground mb-4 md:mb-0">
+        <div className="mt-12 pt-6 flex flex-col md:flex-row justify-between items-center border-t border-white/20">
+          <p className="text-sm text-gray-400 mb-4 md:mb-0">
             © {new Date().getFullYear()} Portfolio. All rights reserved.
-          </p>          <div className="flex space-x-6 text-sm text-muted-foreground">
+          </p>
+          <div className="flex space-x-6 text-sm text-gray-400">
             <a
               href="#/privacy-policy"
-              className="hover:text-foreground transition-colors"
+              className="hover:text-white transition-colors underline-animation focus:outline-none focus:ring-2 focus:ring-primary/70"
             >
               Privacy Policy
             </a>
             <a
               href="#/terms-of-service"
-              className="hover:text-foreground transition-colors"
+              className="hover:text-white transition-colors underline-animation focus:outline-none focus:ring-2 focus:ring-primary/70"
             >
               Terms of Service
             </a>
