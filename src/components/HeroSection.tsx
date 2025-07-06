@@ -46,7 +46,7 @@ export const HeroSection = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="button-hover-effect"
+                className="button-hover-effect focus:ring-2 focus:ring-blue-500"
                 asChild
               >
                 <a href="mailto:gauravupadhayay9801@gmail.com">

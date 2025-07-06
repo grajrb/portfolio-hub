@@ -30,27 +30,29 @@ const BlogForm: React.FC<BlogFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 border p-4 rounded-lg bg-secondary/50">
+    <form onSubmit={handleSubmit} className="space-y-4 border p-6 rounded-2xl bg-secondary/50 shadow-card" aria-label="Create blog post">
       <input
         type="text"
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="w-full p-2 border rounded"
+        className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/70"
         maxLength={100}
         required
+        aria-label="Blog title"
       />
       <textarea
         placeholder="Write your blog post..."
         value={content}
         onChange={(e) => setContent(e.target.value)}
-        className="w-full p-2 border rounded min-h-[100px]"
+        className="w-full p-2 border rounded-lg min-h-[100px] focus:outline-none focus:ring-2 focus:ring-primary/70"
         maxLength={2000}
         required
+        aria-label="Blog content"
       />
-      <input type="file" accept="image/*" onChange={handleImageChange} />
-      {image && <img src={image} alt="Preview" className="max-h-40 mt-2 rounded" />}
-      <button type="submit" className="button button-hover-effect">Post Blog</button>
+      <input type="file" accept="image/*" onChange={handleImageChange} aria-label="Upload image" />
+      {image && <img src={image} alt="Preview" className="max-h-40 mt-2 rounded-xl shadow-card" />}
+      <button type="submit" className="button button-hover-effect w-full" aria-label="Post blog">Post Blog</button>
     </form>
   );
 };
