@@ -59,7 +59,13 @@ export const HeroSection = () => {
             <div className="w-full max-w-md">
               {/* Video removed */}
               <div className="w-full h-auto flex items-center justify-center rounded-lg bg-secondary/30 p-6 min-h-[300px]">
-                {/* Right content intentionally left empty */}
+                {/* Modern animated SVG illustration */}
+                <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="animate-pulse">
+                  <circle cx="90" cy="90" r="80" stroke="#6366F1" strokeWidth="8" fill="#EEF2FF" />
+                  <rect x="50" y="50" width="80" height="80" rx="20" fill="#A5B4FC" />
+                  <circle cx="90" cy="90" r="30" fill="#6366F1" />
+                  <animateTransform attributeName="transform" type="rotate" from="0 90 90" to="360 90 90" dur="6s" repeatCount="indefinite" />
+                </svg>
               </div>
             </div>
           </div>
