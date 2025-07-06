@@ -59,16 +59,11 @@ export const HeroSection = () => {
             <div className="w-full max-w-md">
               {/* Video removed */}
               <div className="w-full h-auto flex items-center justify-center rounded-lg bg-secondary/30 p-6 min-h-[300px]">
-                <video
-                  src="/Asset/Java-developer.mp4"
-                  controls
-                  autoPlay
-                  loop
-                  muted
+                <img
+                  src="/Asset/java-script-theme-computers-light-600nw-2179450169.webp"
+                  alt="JavaScript Theme Computers"
                   className="max-h-72 rounded-lg object-cover shadow-lg"
-                >
-                  Your browser does not support the video tag.
-                </video>
+                />
               </div>
             </div>
           </div>
