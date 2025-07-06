@@ -60,7 +60,7 @@ export const HeroSection = () => {
               {/* Video removed */}
               <div className="w-full h-auto flex items-center justify-center rounded-lg bg-secondary/30 p-6 min-h-[300px]">
                 <video
-                  src="/Asset/Java developer.mp4"
+                  src="/Asset/Java-developer.mp4"
                   controls
                   autoPlay
                   loop
