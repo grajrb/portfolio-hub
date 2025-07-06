@@ -9,7 +9,7 @@ const navLinks = [
 	{ name: 'Projects', href: '#projects' },
 	{ name: 'Skills', href: '#skills' },
 	{ name: 'Contact', href: '#contact' },
-	{ name: 'Blog', href: '#blog' },
+	// { name: 'Blog', href: '#blog' }, // Blog link commented out
 ];
 
 export const Navbar = () => {
@@ -74,19 +74,22 @@ export const Navbar = () => {
 				{/* Desktop Navigation */}
 				<nav className="hidden md:flex items-center space-x-8" aria-label="Primary">
 					{navLinks.map((link) => (
-						<a
-							key={link.name}
-							href={link.href}
-							onClick={(e) => handleNavClick(e, link.href.substring(1))}
-							className={cn(
-								'text-sm font-medium transition-colors link-hover-effect rounded focus:outline-none focus:ring-2 focus:ring-primary/70 text-white',
-								activeSection === link.href.substring(1)
-									? 'text-primary' : 'hover:text-primary',
-							)}
-							aria-current={activeSection === link.href.substring(1) ? 'page' : undefined}
-						>
-							{link.name}
-						</a>
+						// Comment out Blog link rendering
+						link.name === 'Blog' ? null : (
+							<a
+								key={link.name}
+								href={link.href}
+								onClick={(e) => handleNavClick(e, link.href.substring(1))}
+								className={cn(
+									'text-sm font-medium transition-colors link-hover-effect rounded focus:outline-none focus:ring-2 focus:ring-primary/70 text-white',
+									activeSection === link.href.substring(1)
+										? 'text-primary' : 'hover:text-primary',
+								)}
+								aria-current={activeSection === link.href.substring(1) ? 'page' : undefined}
+							>
+								{link.name}
+							</a>
+						)
 					))}
 					<a
 						href="https://github.com/grajrb"
@@ -163,22 +166,25 @@ export const Navbar = () => {
 			>
 				<nav className="flex flex-col items-center space-y-8 px-6">
 					{navLinks.map((link) => (
-						<a
-							key={link.name}
-							href={link.href}
-							className={cn(
-								'text-lg font-medium transition-colors',
-								activeSection === link.href.substring(1)
-									? 'text-primary'
-									: 'text-muted-foreground hover:text-foreground',
-							)}
-							onClick={(e) => {
-								handleNavClick(e, link.href.substring(1));
-								setMobileMenuOpen(false);
-							}}
-						>
-							{link.name}
-						</a>
+						// Comment out Blog link rendering
+						link.name === 'Blog' ? null : (
+							<a
+								key={link.name}
+								href={link.href}
+								className={cn(
+									'text-lg font-medium transition-colors',
+									activeSection === link.href.substring(1)
+										? 'text-primary'
+										: 'text-muted-foreground hover:text-foreground',
+								)}
+								onClick={(e) => {
+									handleNavClick(e, link.href.substring(1));
+									setMobileMenuOpen(false);
+								}}
+							>
+								{link.name}
+							</a>
+						)
 					))}
 					<a
 						href="https://github.com/grajrb"

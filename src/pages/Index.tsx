@@ -5,7 +5,7 @@ import { AboutSection } from '@/components/AboutSection';
 import { ProjectsSection } from '@/components/ProjectsSection';
 import { SkillsSection } from '@/components/SkillsSection';
 import { ContactSection } from '@/components/ContactSection';
-import BlogList from './blog/BlogList';
+// import BlogList from './blog/BlogList'; // Blog logic commented out
 
 const Index = () => {
   return (
@@ -15,9 +15,11 @@ const Index = () => {
       <ProjectsSection />
       <SkillsSection />
       <ContactSection />
+      {/*
       <section id="blog">
         <BlogList />
       </section>
+      */}
     </Layout>
   );
 };
