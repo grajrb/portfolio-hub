@@ -1,6 +1,6 @@
-# Portfolio Hub
+# 🚀 Portfolio Hub - AI-Powered Next.js Portfolio
 
-A modern, responsive portfolio website built with cutting-edge technologies to showcase your skills, projects, and experience.
+A modern, feature-rich portfolio website built with Next.js 14, featuring AI integration, advanced animations, and cutting-edge web technologies.
 
 ## Features
 

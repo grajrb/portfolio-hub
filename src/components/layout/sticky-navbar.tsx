@@ -1,0 +1,222 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useActiveSection } from '@/hooks/use-active-section';
+import { cn } from '@/lib/utils';
+
+const navigation = [
+  { name: 'Home', href: '#hero' },
+  { name: 'About', href: '#about' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Contact', href: '#contact' },
+  { name: 'Newsletter', href: '/newsletter' },
+];
+
+const socialLinks = [
+  { name: 'GitHub', href: 'https://github.com/grajrb', icon: Github },
+  { name: 'LinkedIn', href: 'https://linkedin.com/in/yourprofile', icon: Linkedin },
+  { name: 'Email', href: 'mailto:your.email@example.com', icon: Mail },
+];
+
+export function StickyNavbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const activeSection = useActiveSection();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleNavClick = (href: string, e: React.MouseEvent) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      element?.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileMenuOpen(false);
+    }
+  };
+
+  const handleNavFocus = (item: string) => {
+    setHoveredItem(item);
+    // Blur other nav items
+    navigation.forEach((nav) => {
+      if (nav.name !== item) {
+        const element = document.querySelector(`[data-nav="${nav.name}"]`);
+        element?.classList.add('blur-sm', 'opacity-50');
+      }
+    });
+  };
+
+  const handleNavBlur = () => {
+    setHoveredItem(null);
+    // Remove blur from all nav items
+    navigation.forEach((nav) => {
+      const element = document.querySelector(`[data-nav="${nav.name}"]`);
+      element?.classList.remove('blur-sm', 'opacity-50');
+    });
+  };
+
+  return (
+    <motion.header
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className={cn(
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        isScrolled
+          ? 'glass-effect shadow-lg py-2'
+          : 'bg-transparent py-4'
+      )}
+    >
+      <nav className="container-wrapper section-padding">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Link
+              href="/"
+              className="text-xl font-bold text-primary"
+              onClick={(e) => handleNavClick('#hero', e)}
+            >
+              Portfolio
+            </Link>
+          </motion.div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navigation.map((item) => (
+              <motion.div
+                key={item.name}
+                data-nav={item.name}
+                whileHover={{ y: -2 }}
+                onMouseEnter={() => handleNavFocus(item.name)}
+                onMouseLeave={handleNavBlur}
+              >
+                <Link
+                  href={item.href}
+                  className={cn(
+                    'nav-link',
+                    activeSection === item.href.replace('#', '') && 'active',
+                    hoveredItem && hoveredItem !== item.name && 'blur-sm opacity-50'
+                  )}
+                  onClick={(e) => handleNavClick(item.href, e)}
+                >
+                  {item.name}
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Social Links - Desktop */}
+          <div className="hidden md:flex items-center space-x-4">
+            {socialLinks.map((link) => (
+              <motion.a
+                key={link.name}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.9 }}
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                <link.icon size={18} />
+                <span className="sr-only">{link.name}</span>
+              </motion.a>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={isMobileMenuOpen ? 'close' : 'menu'}
+                initial={{ opacity: 0, rotate: -90 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                exit={{ opacity: 0, rotate: 90 }}
+                transition={{ duration: 0.2 }}
+              >
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </motion.div>
+            </AnimatePresence>
+          </Button>
+        </div>
+
+        {/* Mobile Navigation */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden overflow-hidden"
+            >
+              <div className="py-4 space-y-4">
+                {navigation.map((item, index) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <Link
+                      href={item.href}
+                      className={cn(
+                        'block py-2 text-lg font-medium transition-colors',
+                        activeSection === item.href.replace('#', '')
+                          ? 'text-primary'
+                          : 'text-muted-foreground hover:text-foreground'
+                      )}
+                      onClick={(e) => handleNavClick(item.href, e)}
+                    >
+                      {item.name}
+                    </Link>
+                  </motion.div>
+                ))}
+
+                {/* Mobile Social Links */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: navigation.length * 0.1 }}
+                  className="flex items-center space-x-6 pt-4 border-t border-border"
+                >
+                  {socialLinks.map((link) => (
+                    <motion.a
+                      key={link.name}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileTap={{ scale: 0.9 }}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      <link.icon size={20} />
+                      <span className="sr-only">{link.name}</span>
+                    </motion.a>
+                  ))}
+                </motion.div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </nav>
+    </motion.header>
+  );
+}
