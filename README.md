@@ -111,3 +111,5 @@ For any inquiries, feel free to reach out:
 - **Email**: gauravupadhayay9801@gmail.com
 - **GitHub**: [grajrb](https://github.com/grajrb)
 - **LinkedIn**: [Gaurav Raj](https://www.linkedin.com/in/gaurav-raj1/)
+- **LeetCode**: [gauravraj_9](https://leetcode.com/u/gauravraj_9/)
+- **Location**: Coimbatore, Tamil Nadu, India

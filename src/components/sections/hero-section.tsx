@@ -55,7 +55,7 @@ export function HeroSection() {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-x-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 -z-10">
         <motion.div
@@ -85,19 +85,26 @@ export function HeroSection() {
           <div className="lg:col-span-3">
             <motion.div variants={itemVariants}>
               <span className="inline-block py-2 px-4 bg-gradient-to-r from-primary/10 to-purple-500/10 border border-primary/20 text-primary text-sm rounded-full mb-6 font-medium">
-                🚀 Full-Stack Developer & AI Engineer
+                🚀 Full-Stack Developer • Software Engineer @ Bosch
               </span>
             </motion.div>
 
             <motion.h1 
               variants={itemVariants}
-              className="font-bold text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-6"
+              className="font-bold text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-8 leading-tight"
+              style={{ minHeight: 'fit-content', overflow: 'visible' }}
             >
               <span className="block mb-2">Hi, I'm</span>
               <motion.span 
-                className="block bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent"
+                className="hero-name bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
+                style={{ 
+                  display: 'inline-block',
+                  minHeight: 'fit-content',
+                  paddingBottom: '0.2em',
+                  marginBottom: '0.1em'
+                }}
               >
                 Gaurav Raj
               </motion.span>
@@ -107,8 +114,8 @@ export function HeroSection() {
               variants={itemVariants}
               className="text-xl text-muted-foreground mb-8 max-w-xl leading-relaxed"
             >
-              I craft exceptional digital experiences through modern web technologies, 
-              AI integration, and robust backend solutions. Let's build something amazing together.
+              Results-driven Full-Stack Developer with 1.9+ years of experience architecting scalable, 
+              cloud-native applications. Proficient in MERN stack, microservices, and system design principles.
             </motion.p>
 
             <motion.div 
@@ -158,8 +165,8 @@ export function HeroSection() {
               <span className="text-sm text-muted-foreground">Follow me:</span>
               {[
                 { icon: Github, href: 'https://github.com/grajrb', label: 'GitHub' },
-                { icon: Linkedin, href: 'https://linkedin.com/in/yourprofile', label: 'LinkedIn' },
-                { icon: Mail, href: 'mailto:your.email@example.com', label: 'Email' },
+                { icon: Linkedin, href: 'https://www.linkedin.com/in/gaurav-raj1/', label: 'LinkedIn' },
+                { icon: Mail, href: 'mailto:gauravupadhayay9801@gmail.com', label: 'Email' },
               ].map((social, index) => (
                 <motion.a
                   key={social.label}
@@ -201,7 +208,7 @@ export function HeroSection() {
               </motion.div>
               
               {/* Floating Tech Icons */}
-              {['React', 'Next.js', 'TypeScript', 'Node.js', 'AI'].map((tech, index) => (
+              {['React.js', 'Node.js', 'TypeScript', 'AWS', 'Docker'].map((tech, index) => (
                 <motion.div
                   key={tech}
                   className="absolute text-xs bg-background/80 backdrop-blur-sm border border-border rounded-full px-3 py-1"

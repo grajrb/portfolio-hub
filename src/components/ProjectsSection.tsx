@@ -7,59 +7,99 @@ import { cn } from '@/lib/utils';
 const projects = [
 	{
 		id: 1,
-		title: 'Event Booking System',
+		title: 'EzCommerce',
+		description:
+			'Full-stack e-commerce platform built with MERN stack featuring user authentication, product management, shopping cart, orders, and admin panel. Designed for scalability and easy customization.',
+		tags: ['JavaScript', 'React', 'Node.js', 'MongoDB', 'Express'],
+		githubUrl: 'https://github.com/grajrb/EzCommerce',
+	},
+	{
+		id: 2,
+		title: 'EventBookingSystem',
 		description:
 			'A modern full-stack app for browsing, booking, and managing events with real-time updates and admin features.',
 		tags: ['TypeScript', 'React', 'Node.js', 'MongoDB'],
 		githubUrl: 'https://github.com/grajrb/EventBookingSystem',
 	},
 	{
-		id: 2,
+		id: 3,
+		title: 'ProSyncHub',
+		description:
+			'Real-time, full-stack industrial asset management and predictive maintenance platform with IoT data ingestion, work order management, and analytics.',
+		tags: ['TypeScript', 'React', 'Firebase', 'IoT', 'Analytics'],
+		githubUrl: 'https://github.com/grajrb/ProSyncHub',
+	},
+	{
+		id: 4,
 		title: 'CryptoChatSphere',
 		description:
-			'A modern decentralized messaging application that combines traditional chat functionality with Web3 capabilities, allowing users to connect their crypto wallets.',
+			'Modern decentralized messaging application that combines traditional chat functionality with Web3 capabilities. Users can connect crypto wallets and engage in real-time conversations.',
 		tags: ['TypeScript', 'React', 'Web3', 'Blockchain'],
 		githubUrl: 'https://github.com/grajrb/crypto-chat-sphere',
 	},
 	{
-		id: 3,
-		title: 'EzCommerce',
-		description:
-			'A full-stack e-commerce platform built with the MERN stack featuring user authentication, product management, shopping cart, and order processing.',
-		tags: ['JavaScript', 'React', 'Node.js', 'MongoDB'],
-		githubUrl: 'https://github.com/grajrb/EzCommerce',
-	},
-	{
-		id: 4,
-		title: 'ProSyncHub',
-		description:
-			'A collaborative project management tool with real-time synchronization and team collaboration features.',
-		tags: ['TypeScript', 'React', 'Firebase', 'Tailwind CSS'],
-		githubUrl: 'https://github.com/grajrb/ProSyncHub',
-	},
-	{
 		id: 5,
-		title: 'SecureAuthHub',
+		title: 'Portfolio Hub',
 		description:
-			'A comprehensive authentication system with multi-factor authentication, OAuth integration, and advanced security features.',
-		tags: ['TypeScript', 'React', 'Node.js', 'Security'],
-		githubUrl: 'https://github.com/grajrb/SecureAuthHub',
+			'A modern, responsive portfolio website built with TypeScript, React, and Vite. Features reusable UI components, project showcase, skills display, and contact information.',
+		tags: ['TypeScript', 'React', 'Vite', 'Tailwind CSS'],
+		githubUrl: 'https://github.com/grajrb/portfolio-hub',
+	},
+	{
+		id: 6,
+		title: 'Task Management with Blockchain Rewards',
+		description:
+			'Manage tasks efficiently and earn token rewards for productivity. TaskToken combines task management with blockchain incentives.',
+		tags: ['TypeScript', 'React', 'Blockchain', 'Smart Contracts'],
+		githubUrl: 'https://github.com/grajrb/Task-Management',
 	},
 	{
 		id: 7,
 		title: 'NewsContextGPT',
 		description:
-			'An AI-powered news analysis tool that provides context and insights for current news articles.',
+			'An AI-powered news analysis tool that provides context and insights for current news articles using advanced language processing.',
 		tags: ['TypeScript', 'React', 'OpenAI', 'News API'],
 		githubUrl: 'https://github.com/grajrb/NewsContextGPT',
 	},
 	{
 		id: 8,
-		title: 'Task Management with Blockchain Rewards',
+		title: 'SecureAuthHub',
 		description:
-			'Manage your tasks efficiently and earn token rewards for your productivity. Combines task management with blockchain incentives.',
-		tags: ['TypeScript', 'React', 'Blockchain', 'Smart Contracts'],
-		githubUrl: 'https://github.com/grajrb/Task-Management',
+			'A comprehensive authentication system with multi-factor authentication, OAuth integration, and advanced security features.',
+		tags: ['TypeScript', 'Node.js', 'Security', 'OAuth'],
+		githubUrl: 'https://github.com/grajrb/SecureAuthHub',
+	},
+	{
+		id: 9,
+		title: 'Lexi Legal Assistant',
+		description:
+			'AI-powered legal assistant application to help with legal document analysis and legal query resolution.',
+		tags: ['JavaScript', 'AI', 'Legal Tech', 'NLP'],
+		githubUrl: 'https://github.com/grajrb/lexi-legal-assistant',
+	},
+	{
+		id: 10,
+		title: 'Product Recommendation Engine',
+		description:
+			'Recommendation model for providing the best combos of items using Market Basket Analysis with Apriori Algorithm for retail optimization.',
+		tags: ['Python', 'Machine Learning', 'Data Science', 'Apriori'],
+		githubUrl: 'https://github.com/grajrb/Product-Recommendation-Engine',
+	},
+	{
+		id: 11,
+		title: 'LLM API',
+		description:
+			'Large Language Model API implementation for various natural language processing tasks and AI applications.',
+		tags: ['Python', 'Machine Learning', 'API', 'NLP'],
+		githubUrl: 'https://github.com/grajrb/LLM-Api',
+	},
+	{
+		id: 12,
+		title: 'LinkedIn Automation',
+		description:
+			'Automation tool for LinkedIn interactions and networking activities to streamline professional connections.',
+		tags: ['TypeScript', 'Automation', 'LinkedIn', 'Selenium'],
+		githubUrl: 'https://github.com/grajrb/Linkdlen-Automation',
 	},
 ];
 

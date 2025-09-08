@@ -50,7 +50,7 @@ export const Footer = () => {
                 </Button>
               </a>
               <a
-                href="https://leetcode.com/graj_rb/"
+                href="https://leetcode.com/u/gauravraj_9/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LeetCode"

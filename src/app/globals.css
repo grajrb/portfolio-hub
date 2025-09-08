@@ -91,6 +91,16 @@
 
   .heading-gradient {
     @apply bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent;
+    line-height: 1.2;
+    padding-bottom: 0.05em;
+    overflow: visible;
+  }
+
+  .hero-name {
+    line-height: 1.1 !important;
+    padding-bottom: 0.1em;
+    overflow: visible !important;
+    display: block;
   }
 
   .glass-effect {

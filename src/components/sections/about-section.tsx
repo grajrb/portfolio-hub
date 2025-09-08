@@ -30,21 +30,21 @@ const itemVariants = {
 };
 
 const stats = [
-  { icon: Code2, label: 'Projects Completed', value: '50+', color: 'text-blue-500' },
-  { icon: Rocket, label: 'Technologies Mastered', value: '25+', color: 'text-green-500' },
-  { icon: Users, label: 'Happy Clients', value: '30+', color: 'text-purple-500' },
-  { icon: Trophy, label: 'Years Experience', value: '3+', color: 'text-orange-500' },
+  { icon: Code2, label: 'Projects Completed', value: '15+', color: 'text-blue-500' },
+  { icon: Rocket, label: 'Technologies Mastered', value: '20+', color: 'text-green-500' },
+  { icon: Users, label: 'Team Collaborations', value: '5+', color: 'text-purple-500' },
+  { icon: Trophy, label: 'Years Experience', value: '1.9+', color: 'text-orange-500' },
 ];
 
 const skills = [
-  'React & Next.js',
-  'TypeScript',
-  'Node.js',
-  'Python',
-  'AI/ML Integration',
-  'Cloud Architecture',
-  'DevOps',
-  'Database Design',
+  'React.js & Next.js',
+  'TypeScript & JavaScript',
+  'Node.js & Express.js',
+  'PostgreSQL & MongoDB',
+  'AWS & Azure',
+  'Docker & Kubernetes',
+  'CI/CD & DevOps',
+  'System Design',
 ];
 
 export function AboutSection() {
@@ -70,8 +70,8 @@ export function AboutSection() {
             <span className="text-primary"> Experiences</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            I'm a passionate full-stack developer who transforms ideas into elegant, 
-            functional solutions using cutting-edge technologies and AI integration.
+            I'm a results-driven full-stack developer with 1.9+ years of experience architecting 
+            scalable, cloud-native applications and leading technical innovations.
           </p>
         </motion.div>
 
@@ -83,19 +83,19 @@ export function AboutSection() {
                 variants={itemVariants}
                 className="text-lg text-muted-foreground leading-relaxed"
               >
-                With over 3 years of experience in full-stack development, I specialize in 
-                creating modern web applications that combine beautiful design with robust functionality. 
-                My journey began with curiosity about how things work on the web, and it has evolved 
-                into a passion for building scalable, user-centric solutions.
+                With 1.9+ years of experience in full-stack development at Bosch Global Software Technologies, 
+                I specialize in building automation tools and employee portals using React.js and Node.js microservices. 
+                As a Product Owner, I successfully led the VS Code migration strategy, achieving a 26% adoption rate 
+                and realizing ₹870K in operational savings.
               </motion.p>
               
               <motion.p 
                 variants={itemVariants}
                 className="text-lg text-muted-foreground leading-relaxed"
               >
-                I stay at the forefront of technology trends, particularly in AI integration, 
-                cloud architecture, and modern JavaScript frameworks. My approach combines 
-                technical expertise with creative problem-solving to deliver exceptional results.
+                I excel in optimizing system performance through PostgreSQL query optimization and Redis caching, 
+                achieving 25% faster API responses. My expertise spans the entire development lifecycle, from CI/CD 
+                pipeline implementation with Jenkins and Docker on Azure to building secure RBAC systems for B2B fintech platforms.
               </motion.p>
 
               {/* Skills */}

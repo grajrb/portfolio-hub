@@ -236,7 +236,7 @@ export const ContactSection = () => {
                       LinkedIn
                     </a>
                     <a
-                      href="https://leetcode.com/graj_rb/"
+                      href="https://leetcode.com/u/gauravraj_9/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="button-hover-effect inline-flex items-center justify-center px-4 py-2 border border-border/60 rounded text-sm font-medium hover:shadow-lg transition-all duration-300"

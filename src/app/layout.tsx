@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/providers/theme-provider';
@@ -13,24 +13,40 @@ import { ScrollProgress } from '@/components/layout/scroll-progress';
 
 const inter = Inter({ subsets: ['latin'] });
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' }
+  ],
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export const metadata: Metadata = {
   title: {
-    template: '%s | Portfolio',
-    default: 'Portfolio - Full Stack Developer & AI Engineer',
+    template: '%s | Gaurav Raj Portfolio',
+    default: 'Gaurav Raj - Full Stack Developer & Software Engineer',
   },
-  description: 'Portfolio website showcasing full-stack development skills, AI engineering projects, and innovative web solutions.',
+  description: 'Portfolio of Gaurav Raj - Full-Stack Developer with 1.9+ years of experience at Bosch Global Software Technologies. Expert in React.js, Node.js, microservices, and cloud technologies.',
   keywords: [
+    'Gaurav Raj',
     'Full Stack Developer',
-    'AI Engineer',
-    'React',
-    'Next.js',
-    'TypeScript',
+    'Software Engineer',
+    'React.js',
     'Node.js',
-    'Machine Learning',
-    'Web Development',
+    'TypeScript',
+    'Next.js',
+    'Bosch Global Software Technologies',
+    'MERN Stack',
+    'DevOps',
+    'AWS',
+    'Azure',
+    'Microservices',
+    'System Design',
   ],
-  authors: [{ name: 'Your Name' }],
-  creator: 'Your Name',
+  authors: [{ name: 'Gaurav Raj' }],
+  creator: 'Gaurav Raj',
   metadataBase: new URL('https://grajrb.github.io/portfolio-hub'),
   alternates: {
     canonical: '/',
@@ -39,14 +55,14 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://grajrb.github.io/portfolio-hub',
-    title: 'Portfolio - Full Stack Developer & AI Engineer',
-    description: 'Portfolio website showcasing full-stack development skills, AI engineering projects, and innovative web solutions.',
-    siteName: 'Portfolio',
+    title: 'Gaurav Raj - Full Stack Developer & Software Engineer',
+    description: 'Portfolio of Gaurav Raj - Full-Stack Developer with 1.9+ years of experience. Expert in React.js, Node.js, microservices, and cloud technologies.',
+    siteName: 'Gaurav Raj Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Portfolio - Full Stack Developer & AI Engineer',
-    description: 'Portfolio website showcasing full-stack development skills, AI engineering projects, and innovative web solutions.',
+    title: 'Gaurav Raj - Full Stack Developer & Software Engineer',
+    description: 'Portfolio of Gaurav Raj - Full-Stack Developer with expertise in modern web technologies and cloud solutions.',
   },
   robots: {
     index: true,

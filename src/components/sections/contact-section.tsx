@@ -39,15 +39,15 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'your.email@example.com',
-    href: 'mailto:your.email@example.com',
+    value: 'gauravupadhayay9801@gmail.com',
+    href: 'mailto:gauravupadhayay9801@gmail.com',
     color: 'text-blue-500',
   },
   {
     icon: Phone,
     label: 'Phone',
-    value: '+1 (555) 123-4567',
-    href: 'tel:+15551234567',
+    value: '+91-7992425448',
+    href: 'tel:+917992425448',
     color: 'text-green-500',
   },
   {
