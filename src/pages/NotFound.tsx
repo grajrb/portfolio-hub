@@ -1,15 +1,17 @@
-import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
+// This component is rendered during SSR. Avoid importing or calling
+// client-only hooks (like react-router's useLocation) at top-level.
 const NotFound = () => {
-  const location = useLocation();
-
   useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      location.pathname
-    );
-  }, [location.pathname]);
+    // Access location only on the client where window is available.
+    try {
+      const pathname = typeof window !== "undefined" ? window.location.pathname : "(unknown)";
+      console.error("404 Error: User attempted to access non-existent route:", pathname);
+    } catch (e) {
+      // swallow any errors to keep SSR stable
+    }
+  }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">

@@ -2,17 +2,27 @@ import React, { useState } from 'react';
 import { Blog } from './BlogList';
 
 interface BlogPostProps {
-  blog: Blog;
-  onAddComment: (blogId: string, text: string) => void;
+  blog?: Blog; // made optional to avoid SSR crash when Next prerenders without props
+  onAddComment?: (blogId: string, text: string) => void;
 }
 
 const BlogPost: React.FC<BlogPostProps> = ({ blog, onAddComment }) => {
+  // If no blog provided (e.g., during Next.js automatic prerender of /blog/BlogPost), render a safe fallback.
+  if (!blog) {
+    return (
+      <article className="p-6 border rounded-2xl bg-card/40 text-center" aria-label="Blog post unavailable">
+        <h2 className="text-xl font-semibold mb-2">Blog Post Unavailable</h2>
+        <p className="text-muted-foreground text-sm">This route is a legacy placeholder. Visit the main blog at <a href="/blog" className="underline text-primary">/blog</a>.</p>
+      </article>
+    );
+  }
+
   const [comment, setComment] = useState('');
 
   const handleComment = (e: React.FormEvent) => {
     e.preventDefault();
     if (!comment.trim()) return;
-    onAddComment(blog.id, comment);
+    onAddComment?.(blog.id, comment);
     setComment('');
   };
 
