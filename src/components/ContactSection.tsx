@@ -10,7 +10,8 @@ import { Mail, MapPin, Phone, Send, Github, Linkedin } from 'lucide-react';
 export const ContactSection = () => {
   // Initialize EmailJS on component mount
   useEffect(() => {
-    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+    // Use Next.js environment variable naming for public env vars
+    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string);
   }, []);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -33,8 +34,8 @@ export const ContactSection = () => {
     console.log('Form data being sent:', formData);    // Using @emailjs/browser with explicit send method and different parameter names
     emailjs
       .send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID, 
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID, 
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
         {
           // Try with different variations of parameter names
           name: formData.from_name,
@@ -45,7 +46,7 @@ export const ContactSection = () => {
           subject: formData.subject,
           message: formData.message
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
       ).then((result) => {
         console.log('Success:', result.text);
         console.log('Email sent with parameters:', {

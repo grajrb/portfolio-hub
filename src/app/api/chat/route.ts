@@ -82,8 +82,8 @@ export async function POST(req: Request) {
     const model = getAIModel();
     
     const result = await streamText({
-      model,
-      messages: convertToCoreMessages(messages),
+      model: model as any,
+      messages: convertToCoreMessages(messages as any),
       system: `You are an expert career advisor and resume optimization specialist with extensive knowledge of:
       
 1. ATS (Applicant Tracking System) optimization
