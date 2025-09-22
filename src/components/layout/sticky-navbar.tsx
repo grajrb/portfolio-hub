@@ -9,11 +9,11 @@ import { useActiveSection } from '@/hooks/use-active-section';
 import { cn } from '@/lib/utils';
 
 const navigation = [
-  { name: 'Home', href: '#hero' },
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '/#hero' },
+  { name: 'About', href: '/#about' },
+  { name: 'Skills', href: '/#skills' },
+  { name: 'Projects', href: '/#projects' },
+  { name: 'Contact', href: '/#contact' },
   { name: 'Newsletter', href: '/newsletter' },
 ];
 
@@ -48,10 +48,15 @@ export function StickyNavbar() {
   }, [isMobileMenuOpen]);
 
   const handleNavClick = (href: string, e: React.MouseEvent) => {
-    if (href.startsWith('#')) {
-      e.preventDefault();
-      const element = document.querySelector(href);
-      element?.scrollIntoView({ behavior: 'smooth' });
+    // Internal section navigation (same-page or cross-page hash)
+    if (href.startsWith('/#')) {
+      // If already on home page, smooth scroll instead of full navigation
+      if (window.location.pathname === '/' ) {
+        e.preventDefault();
+        const hash = href.replace('/',''); // -> '#about'
+        const el = document.querySelector(hash);
+        el?.scrollIntoView({ behavior: 'smooth' });
+      }
       setIsMobileMenuOpen(false);
     }
   };
@@ -130,7 +135,7 @@ export function StickyNavbar() {
                   href={item.href}
                   className={cn(
                     'nav-link',
-                    activeSection === item.href.replace('#', '') && 'active',
+                    activeSection === item.href.replace('/#', '') && 'active',
                     hoveredItem && hoveredItem !== item.name && 'blur-sm opacity-50'
                   )}
                   onClick={(e) => handleNavClick(item.href, e)}
@@ -202,7 +207,7 @@ export function StickyNavbar() {
                       href={item.href}
                       className={cn(
                         'block py-2 text-lg font-medium transition-colors',
-                        activeSection === item.href.replace('#', '')
+                        activeSection === item.href.replace('/#', '')
                           ? 'text-primary'
                           : 'text-muted-foreground hover:text-foreground'
                       )}
