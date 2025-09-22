@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import { trackSocialClick, trackResumeView } from '@/lib/analytics';
 import { LeetCodeIcon } from '@/components/icons/leetcode-icon';
 import { Button } from '@/components/ui/button';
 import { useActiveSection } from '@/hooks/use-active-section';
@@ -181,11 +182,23 @@ export function StickyNavbar() {
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.9 }}
                 className="text-muted-foreground hover:text-primary transition-colors"
+                onClick={() => link.name === 'LeetCode' ? trackSocialClick('leetcode') : link.name === 'GitHub' ? trackSocialClick('github') : link.name === 'LinkedIn' ? trackSocialClick('linkedin') : undefined}
               >
                 <link.icon size={18} />
                 <span className="sr-only">{link.name}</span>
               </motion.a>
             ))}
+            <motion.a
+              href="https://drive.google.com/file/d/1Wr0rt4ivdyNs-WSEbeEwhiDoyLc6RL1k/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-sm font-medium px-3 py-1 rounded-md border border-border hover:border-primary/40 transition-colors text-muted-foreground hover:text-primary"
+              onClick={trackResumeView}
+            >
+              Resume
+            </motion.a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -257,11 +270,22 @@ export function StickyNavbar() {
                       rel="noopener noreferrer"
                       whileTap={{ scale: 0.9 }}
                       className="text-muted-foreground hover:text-primary transition-colors"
+                      onClick={() => link.name === 'LeetCode' ? trackSocialClick('leetcode') : link.name === 'GitHub' ? trackSocialClick('github') : link.name === 'LinkedIn' ? trackSocialClick('linkedin') : undefined}
                     >
                       <link.icon size={20} />
                       <span className="sr-only">{link.name}</span>
                     </motion.a>
                   ))}
+                  <motion.a
+                    href="https://drive.google.com/file/d/1Wr0rt4ivdyNs-WSEbeEwhiDoyLc6RL1k/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileTap={{ scale: 0.9 }}
+                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                    onClick={trackResumeView}
+                  >
+                    Resume
+                  </motion.a>
                 </motion.div>
               </div>
             </motion.div>

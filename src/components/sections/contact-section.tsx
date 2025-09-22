@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useCallback } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
@@ -21,8 +21,11 @@ import {
   Coffee,
   MessageCircle,
   CheckCircle,
-  Loader2
+  Loader2,
+  ShieldCheck,
+  AlertTriangle
 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const formSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -31,9 +34,16 @@ const formSchema = z.object({
   message: z.string().min(10, 'Message must be at least 10 characters'),
   budget: z.string().optional(),
   timeline: z.string().optional(),
+  // honeypot field (should remain empty)
+  company: z.string().max(0).optional().or(z.literal('')),
 });
 
 type FormData = z.infer<typeof formSchema>;
+
+// Environment variable guards (NEXT_PUBLIC_*)
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
 const contactInfo = [
   {
@@ -83,39 +93,95 @@ export function ContactSection() {
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = async (data: FormData) => {
-    setIsSubmitting(true);
-    
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
+  const onSubmit = useCallback(async (data: FormData) => {
+    // Basic honeypot check
+    if (data.company) {
+      return; // silently drop bot submission
+    }
 
-      if (response.ok) {
+    setIsSubmitting(true);
+    const start = performance.now();
+    let emailSent = false;
+    let apiStored = false;
+    let emailError: unknown = null;
+    let apiError: unknown = null;
+
+    try {
+      // Fire both operations (EmailJS + API persistence) sequentially but independently to ensure reliability
+      if (EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY) {
+        try {
+          await emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            {
+              from_name: data.name,
+              reply_to: data.email,
+              subject: data.subject,
+              message: data.message,
+              budget: data.budget || 'N/A',
+              timeline: data.timeline || 'N/A'
+            },
+            { publicKey: EMAILJS_PUBLIC_KEY }
+          );
+          emailSent = true;
+        } catch (err) {
+          emailError = err;
+          console.error('EmailJS send failed', err);
+        }
+      } else {
+        console.warn('EmailJS env vars missing: skipping direct email send');
+      }
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            subject: data.subject,
+            message: data.message,
+            budget: data.budget,
+            timeline: data.timeline,
+          }),
+        });
+        if (response.ok) {
+          apiStored = true;
+        } else {
+          apiError = await response.json().catch(() => ({}));
+        }
+      } catch (err) {
+        apiError = err;
+        console.error('Contact API store failed', err);
+      }
+
+      const duration = Math.round(performance.now() - start);
+
+      if (emailSent) {
         toast({
-          title: "Message sent successfully!",
-          description: "Thanks for reaching out. I'll get back to you soon.",
-          duration: 5000,
+          title: 'Message sent successfully!',
+          description: `Thanks for reaching out. I'll get back to you soon. (${duration}ms)`
+        });
+        reset();
+      } else if (apiStored) {
+        toast({
+          title: 'Message stored',
+          description: 'Your message was saved but email notification failed. I will still review it shortly.'
         });
         reset();
       } else {
-        throw new Error('Failed to send message');
+        throw new Error('Both email and storage failed');
       }
-    } catch (error) {
+    } catch (err) {
       toast({
-        title: "Failed to send message",
-        description: "Please try again or contact me directly via email.",
-        variant: "destructive",
-        duration: 5000,
+        title: 'Failed to send message',
+        description: 'Please try again or contact me directly via email.',
+        variant: 'destructive'
       });
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }, [toast, reset]);
 
   return (
     <section id="contact" className="py-20 bg-gradient-to-b from-secondary/10 to-background">
@@ -158,7 +224,7 @@ export function ContactSection() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Name *</Label>
@@ -198,6 +264,12 @@ export function ContactSection() {
                     {errors.subject && (
                       <p className="text-sm text-destructive">{errors.subject.message}</p>
                     )}
+                  </div>
+
+                  {/* Honeypot field - hidden from real users */}
+                  <div className="hidden">
+                    <label htmlFor="company">Company</label>
+                    <input id="company" type="text" autoComplete="off" tabIndex={-1} {...register('company')} />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -247,24 +319,35 @@ export function ContactSection() {
                     )}
                   </div>
 
-                  <Button 
-                    type="submit" 
-                    size="lg" 
-                    className="w-full group"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Send size={16} className="mr-2 group-hover:translate-x-1 transition-transform" />
-                        Send Message
-                      </>
+                  <div className="space-y-3">
+                    {!EMAILJS_SERVICE_ID && (
+                      <div className="flex items-start gap-2 rounded border border-amber-300 bg-amber-50 dark:bg-amber-950/30 p-3 text-xs text-amber-700 dark:text-amber-300">
+                        <AlertTriangle className="h-4 w-4 mt-0.5" />
+                        <span>Email sending not configured (missing env vars). Message will still be stored.</span>
+                      </div>
                     )}
-                  </Button>
+                    <Button 
+                      type="submit" 
+                      size="lg" 
+                      className="w-full group"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Send size={16} className="mr-2 group-hover:translate-x-1 transition-transform" />
+                          Send Message
+                        </>
+                      )}
+                    </Button>
+                    <p className="text-[11px] text-muted-foreground flex items-center justify-center gap-1">
+                      <ShieldCheck className="h-3 w-3" /> Protected by basic anti-spam measures.
+                    </p>
+                  </div>
                 </form>
               </CardContent>
             </Card>

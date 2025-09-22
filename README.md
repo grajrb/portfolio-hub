@@ -1,18 +1,16 @@
 # 🚀 Portfolio Hub - AI-Powered Next.js Portfolio
 
-A modern, feature-rich portfolio website built with Next.js 14, featuring AI integration, advanced animations, and cutting-edge web technologies.
-
-## Features
-
-
-### Current Status
-
+ Contact form dual-path delivery: stores submissions (Prisma) and optionally sends direct email via EmailJS when configured
+ Aggregated site stats endpoint (/api/stats) powering lightweight metrics bar
 Some sections are still in active development and will show an "under construction" placeholder or custom 404 message:
 
 - Newsletter
 - Resources
 - Tools & Resources
 
+| NEXT_PUBLIC_EMAILJS_SERVICE_ID | (Optional) EmailJS service ID to enable direct email sending from contact form |
+| NEXT_PUBLIC_EMAILJS_TEMPLATE_ID | (Optional) EmailJS template ID used for contact messages |
+| NEXT_PUBLIC_EMAILJS_PUBLIC_KEY | (Optional) EmailJS public key |
 These will roll out incrementally with curated content, developer utilities, and long-form articles.
 
 ### Quick Links

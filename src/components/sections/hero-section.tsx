@@ -239,22 +239,6 @@ export function HeroSection() {
             </motion.div>
           </div>
         </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          variants={itemVariants}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center cursor-pointer"
-            onClick={() => handleScroll('about')}
-          >
-            <span className="text-sm text-muted-foreground mb-2">Scroll to explore</span>
-            <ArrowDown className="w-5 h-5 text-primary" />
-          </motion.div>
-        </motion.div>
       </motion.div>
     </section>
   );

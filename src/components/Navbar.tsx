@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Github, Linkedin } from 'lucide-react';
 import { LeetCodeIcon } from '@/components/icons/leetcode-icon';
+import { trackSocialClick, trackResumeView } from '@/lib/analytics';
 
 const navLinks = [
 	{ name: 'Home', href: '#home' },
@@ -116,6 +117,7 @@ export const Navbar = () => {
 						target="_blank"
 						rel="noopener noreferrer"
 						className="button-hover-effect"
+						onClick={() => trackSocialClick('github')}
 					>
 						<Button size="icon" variant="ghost" className="text-white">
 							<Github size={20} />
@@ -127,6 +129,7 @@ export const Navbar = () => {
 						target="_blank"
 						rel="noopener noreferrer"
 						className="button-hover-effect"
+						onClick={() => trackSocialClick('linkedin')}
 					>
 						<Button size="icon" variant="ghost" className="text-white">
 							<Linkedin size={20} />
@@ -138,6 +141,7 @@ export const Navbar = () => {
 						target="_blank"
 						rel="noopener noreferrer"
 						className="button-hover-effect"
+						onClick={() => trackSocialClick('leetcode')}
 					>
 						<Button size="icon" variant="ghost" className="text-white">
 							<LeetCodeIcon size={20} />
@@ -149,6 +153,7 @@ export const Navbar = () => {
 						target="_blank"
 						rel="noopener noreferrer"
 						className="button-hover-effect"
+						onClick={trackResumeView}
 					>
 						<Button className="text-white">View Resume</Button>
 					</a>
@@ -198,6 +203,7 @@ export const Navbar = () => {
 						target="_blank"
 						rel="noopener noreferrer"
 						className="button-hover-effect"
+						onClick={() => trackSocialClick('github')}
 					>
 						<Button size="icon" variant="ghost" className="text-white">
 							<Github size={20} />
@@ -209,6 +215,7 @@ export const Navbar = () => {
 						target="_blank"
 						rel="noopener noreferrer"
 						className="button-hover-effect"
+						onClick={() => trackSocialClick('linkedin')}
 					>
 						<Button size="icon" variant="ghost" className="text-white">
 							<Linkedin size={20} />
@@ -220,6 +227,7 @@ export const Navbar = () => {
 						target="_blank"
 						rel="noopener noreferrer"
 						className="button-hover-effect"
+						onClick={() => trackSocialClick('leetcode')}
 					>
 						<Button size="icon" variant="ghost" className="text-white">
 							<LeetCodeIcon size={20} />
@@ -231,6 +239,7 @@ export const Navbar = () => {
 						target="_blank"
 						rel="noopener noreferrer"
 						className="w-full button-hover-effect"
+						onClick={trackResumeView}
 					>
 						<Button className="mt-4 w-full text-white">View Resume</Button>
 					</a>

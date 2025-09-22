@@ -2,6 +2,21 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { prisma } from '@/lib/prisma';
 
+// Optional: simple in-memory rate limit (per runtime instance)
+const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
+const RATE_LIMIT_MAX = 5; // per IP per window
+const recentRequests: Record<string, number[]> = {};
+
+function rateLimit(ip: string): boolean {
+  const now = Date.now();
+  if (!recentRequests[ip]) recentRequests[ip] = [];
+  // prune
+  recentRequests[ip] = recentRequests[ip].filter(ts => now - ts < RATE_LIMIT_WINDOW_MS);
+  if (recentRequests[ip].length >= RATE_LIMIT_MAX) return false;
+  recentRequests[ip].push(now);
+  return true;
+}
+
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
   email: z.string().email('Please enter a valid email address'),
@@ -12,11 +27,19 @@ const contactSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
+  const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
   try {
-    const body = await request.json();
+    if (!rateLimit(ip)) {
+      return NextResponse.json({ message: 'Too many requests. Please wait a moment and try again.' }, { status: 429 });
+    }
+
+    const body = await request.json().catch(() => null);
+    if (!body || typeof body !== 'object') {
+      return NextResponse.json({ message: 'Invalid JSON body' }, { status: 400 });
+    }
+
     const validatedData = contactSchema.parse(body);
 
-    // Save to database
     const contact = await prisma.contact.create({
       data: {
         name: validatedData.name,
@@ -30,32 +53,32 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Here you could add email notification logic
-    // For example, using Resend, SendGrid, or another email service
-    
+    // Email sending placeholder (integrate provider e.g. Resend/SendGrid later)
+    // try {
+    //   await sendContactNotification(validatedData); // implement in separate module
+    // } catch (notifyErr) {
+    //   console.warn('Notification email failed', notifyErr);
+    // }
+
     return NextResponse.json(
-      { 
+      {
         message: 'Contact form submitted successfully',
-        id: contact.id 
-      }, 
+        id: contact.id,
+      },
       { status: 200 }
     );
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { 
-          message: 'Validation error', 
-          errors: error.errors 
-        }, 
+        {
+          message: 'Validation error',
+          errors: error.errors,
+        },
         { status: 400 }
       );
     }
-
-    console.error('Contact form error:', error);
-    return NextResponse.json(
-      { message: 'Internal server error' }, 
-      { status: 500 }
-    );
+    console.error('Contact form error:', { ip, error });
+    return NextResponse.json({ message: 'Failed to send message. Please try again or email directly.' }, { status: 500 });
   }
 }
 
