@@ -77,7 +77,7 @@
 ### Experience
 - [x] **Current Role**: Software Engineer at Bosch Global Software Technologies (Jan 2024 - Present)
 - [x] **Previous Role**: Full Stack Developer Intern at HighRadius Technologies (Jan 2022 - Apr 2022)
-- [x] **Key Achievements**: ₹870K cost savings, 26% adoption rate, 25% performance improvement
+- [x] **Key Achievements**: ₹K cost savings, 26% adoption rate, 25% performance improvement
 
 ### Education
 - [x] **Degree**: B.Tech, Computer Science and Engineering
