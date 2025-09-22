@@ -62,10 +62,12 @@ jobs:
 
       - name: Deployment URL
         if: steps.vercel.outputs.preview-url
-        run: echo ${{ steps.set_mode.outputs.mode }} URL: ${{ steps.vercel.outputs.preview-url }}
+        run: |
+          echo "${{ steps.set_mode.outputs.mode }} URL: ${{ steps.vercel.outputs.preview-url }}"
 
       - name: Done
-        run: echo Deployment finished in ${{ steps.set_mode.outputs.mode }} mode
+        run: |
+          echo "Deployment finished in ${{ steps.set_mode.outputs.mode }} mode"
 
 # Notes / Next steps:
 # 1) Add the three secrets above in your GitHub repository Settings -> Secrets -> Actions.
