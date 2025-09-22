@@ -32,7 +32,8 @@
     "incremental": true,
     "module": "esnext",
     "esModuleInterop": true,
-    "moduleResolution": "node",
+  // Switched from 'node' to 'bundler' so packages like 'ai/react' with modern export maps resolve during Next.js build.
+  "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
