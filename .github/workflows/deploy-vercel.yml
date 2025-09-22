@@ -39,6 +39,17 @@ jobs:
       # - VERCEL_ORG_ID      (your Vercel organization id)
       # - VERCEL_PROJECT_ID  (your Vercel project id)
       # You can find Org and Project IDs in the Vercel dashboard (Project Settings -> General).
+      - name: Determine deploy mode
+        id: set_mode
+        run: |
+          if [ "${GITHUB_REF}" = "refs/heads/main" ] && [ "${GITHUB_EVENT_NAME}" = "push" ]; then
+            echo "VERCEL_ARGS=--prod" >> $GITHUB_ENV
+            echo "mode=production" >> $GITHUB_OUTPUT
+          else
+            echo "VERCEL_ARGS=" >> $GITHUB_ENV
+            echo "mode=preview" >> $GITHUB_OUTPUT
+          fi
+
       - name: Deploy to Vercel
         id: vercel
         uses: amondnet/vercel-action@v20
@@ -47,15 +58,14 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           working-directory: .
-          # Production only on main branch pushes; previews for others and PRs.
-          prod: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+          vercel-args: ${{ env.VERCEL_ARGS }}
 
       - name: Deployment URL
         if: steps.vercel.outputs.preview-url
-        run: echo "Deployment finished (prod=${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }})"
+        run: echo "${{ steps.set_mode.outputs.mode }} URL: ${{ steps.vercel.outputs.preview-url }}"
 
       - name: Done
-        run: echo "Deployment finished (prod=${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }})"
+        run: echo "Deployment finished in ${{ steps.set_mode.outputs.mode }} mode"
 
 # Notes / Next steps:
 # 1) Add the three secrets above in your GitHub repository Settings -> Secrets -> Actions.
