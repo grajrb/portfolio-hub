@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Github, Linkedin } from 'lucide-react';
+import { LeetCodeIcon } from '@/components/icons/leetcode-icon';
 
 const navLinks = [
 	{ name: 'Home', href: '#home' },
@@ -33,20 +34,20 @@ export const Navbar = () => {
 	};
 
 	useEffect(() => {
-		const handleScroll = () => {
+		let ticking = false;
+		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		const update = () => {
 			const currentY = window.scrollY;
 			setIsScrolled(currentY > 10);
-
-			// Auto-hide logic: hide when scrolling down beyond 120px, show when scrolling up or at top.
-			if (!mobileMenuOpen) {
+			if (!mobileMenuOpen && !prefersReducedMotion) {
 				if (currentY > 120 && currentY > lastScrollYRef.current) {
 					setHidden(true);
 				} else {
 					setHidden(false);
 				}
+			} else if (prefersReducedMotion) {
+				setHidden(false); // Always show if user prefers reduced motion
 			}
-
-			// Update active section based on scroll position
 			const sections = document.querySelectorAll('section[id]');
 			const scrollPosition = currentY + 100;
 			sections.forEach((section) => {
@@ -58,12 +59,19 @@ export const Navbar = () => {
 					setActiveSection(sectionId);
 				}
 			});
-
 			lastScrollYRef.current = currentY;
+					
+			// measure -> mutate cycle done
+			ticking = false;
 		};
-
-		window.addEventListener('scroll', handleScroll, { passive: true });
-		return () => window.removeEventListener('scroll', handleScroll);
+		const onScroll = () => {
+			if (!ticking) {
+				window.requestAnimationFrame(update);
+				ticking = true;
+			}
+		};
+		window.addEventListener('scroll', onScroll, { passive: true });
+		return () => window.removeEventListener('scroll', onScroll);
 	}, [mobileMenuOpen]);
 
 	return (
@@ -71,7 +79,7 @@ export const Navbar = () => {
 			className={cn(
 				'fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-black text-white shadow-lg will-change-transform',
 				isScrolled ? 'py-3' : 'py-5',
-				hidden ? '-translate-y-full' : 'translate-y-0'
+				hidden ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'
 			)}
 			aria-label="Main navigation"
 		>
@@ -132,20 +140,7 @@ export const Navbar = () => {
 						className="button-hover-effect"
 					>
 						<Button size="icon" variant="ghost" className="text-white">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="20"
-								height="20"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								strokeWidth="2"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-							>
-								<path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
-								<path d="m14.5 15 3 3 3-3" />
-							</svg>
+							<LeetCodeIcon size={20} />
 							<span className="sr-only">LeetCode</span>
 						</Button>
 					</a>
@@ -227,20 +222,7 @@ export const Navbar = () => {
 						className="button-hover-effect"
 					>
 						<Button size="icon" variant="ghost" className="text-white">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="20"
-								height="20"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								strokeWidth="2"
-								strokeLinecap="round"
-								strokeLinejoin="round"
-							>
-								<path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
-								<path d="m14.5 15 3 3 3-3" />
-							</svg>
+							<LeetCodeIcon size={20} />
 							<span className="sr-only">LeetCode</span>
 						</Button>
 					</a>

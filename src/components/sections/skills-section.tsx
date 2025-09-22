@@ -255,13 +255,12 @@ export function SkillsSection() {
                 platform: 'Udemy',
                 status: 'Completed',
                 color: 'bg-green-500/10 text-green-500 border-green-500/20',
-              },
-              {
+              },{
                 title: 'Machine Learning with Python',
                 platform: 'Coursera',
                 status: 'Completed',
                 color: 'bg-green-500/10 text-green-500 border-green-500/20',
-              },
+              }
             ].map((cert, index) => (
               <motion.div
                 key={cert.title}

@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import { LeetCodeIcon } from '@/components/icons/leetcode-icon';
 import { Button } from '@/components/ui/button';
 import { useActiveSection } from '@/hooks/use-active-section';
 import { cn } from '@/lib/utils';
@@ -20,22 +21,7 @@ const navigation = [
 const socialLinks = [
   { name: 'GitHub', href: 'https://github.com/grajrb', icon: Github },
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/gaurav-raj1/', icon: Linkedin },
-  { name: 'LeetCode', href: 'https://leetcode.com/u/gauravraj_9/', icon: () => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
-      <path d="m14.5 15 3 3 3-3" />
-    </svg>
-  ) },
+  { name: 'LeetCode', href: 'https://leetcode.com/u/gauravraj_9/', icon: LeetCodeIcon },
   { name: 'Email', href: 'mailto:gauravupadhayay9801@gmail.com', icon: Mail },
 ];
 
@@ -48,20 +34,31 @@ export function StickyNavbar() {
   const lastScrollYRef = useRef(0);
 
   useEffect(() => {
-    const handleScroll = () => {
+    let ticking = false;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const update = () => {
       const currentY = window.scrollY;
       setIsScrolled(currentY > 50);
-      if (!isMobileMenuOpen) {
+      if (!isMobileMenuOpen && !prefersReducedMotion) {
         if (currentY > 120 && currentY > lastScrollYRef.current) {
           setHidden(true);
         } else {
           setHidden(false);
         }
+      } else if (prefersReducedMotion) {
+        setHidden(false);
       }
       lastScrollYRef.current = currentY;
+      ticking = false;
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, [isMobileMenuOpen]);
 
   // Lock body scroll when mobile menu open
@@ -109,10 +106,11 @@ export function StickyNavbar() {
 
   return (
     <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: hidden ? -100 : 0 }}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: hidden ? -100 : 0, opacity: hidden ? 0 : 1 }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 will-change-transform',
+        'fixed top-0 left-0 right-0 z-50 transition-[background-color,padding] duration-300 will-change-transform',
         isScrolled
           ? 'glass-effect shadow-lg py-2'
           : 'bg-transparent py-4'

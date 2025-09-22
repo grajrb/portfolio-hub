@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Mail } from 'lucide-react';
+import { LeetCodeIcon } from '@/components/icons/leetcode-icon';
 
 export const Footer = () => {
   // Add a scroll function to handle navigation
@@ -57,10 +58,7 @@ export const Footer = () => {
                 className="rounded-full focus:outline-none focus:ring-2 focus:ring-primary/70 transition-colors hover:text-primary hover:bg-white/10 shadow-md"
               >
                 <Button size="icon" variant="ghost" className="text-white">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
-                    <path d="m14.5 15 3 3 3-3"/>
-                  </svg>
+                  <LeetCodeIcon size={20} />
                   <span className="sr-only">LeetCode</span>
                 </Button>
               </a>
