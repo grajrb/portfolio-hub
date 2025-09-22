@@ -138,12 +138,12 @@ export const Navbar = () => {
 						</Button>
 					</a>
 					<a
-						href="https://drive.google.com/file/d/1XQSmRdVuVP5S4k4TFD9TO9hQ6G9xuK6Q/view?usp=sharing"
+						href="https://drive.google.com/file/d/1Wr0rt4ivdyNs-WSEbeEwhiDoyLc6RL1k/view?usp=sharing"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="button-hover-effect"
 					>
-						<Button className="text-white">Resume</Button>
+						<Button className="text-white">View Resume</Button>
 					</a>
 				</nav>
 
@@ -233,12 +233,12 @@ export const Navbar = () => {
 						</Button>
 					</a>
 					<a
-						href="https://drive.google.com/file/d/1XQSmRdVuVP5S4k4TFD9TO9hQ6G9xuK6Q/view?usp=sharing"
+						href="https://drive.google.com/file/d/1Wr0rt4ivdyNs-WSEbeEwhiDoyLc6RL1k/view?usp=sharing"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="w-full button-hover-effect"
 					>
-						<Button className="mt-4 w-full text-white">Resume</Button>
+						<Button className="mt-4 w-full text-white">View Resume</Button>
 					</a>
 				</nav>
 			</div>

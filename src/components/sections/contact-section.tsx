@@ -53,7 +53,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: 'Location',
-    value: 'San Francisco, CA',
+    value: 'Coimbatore, Tamil Nadu, India',
     href: '#',
     color: 'text-purple-500',
   },

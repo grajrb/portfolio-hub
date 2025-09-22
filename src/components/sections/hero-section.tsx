@@ -150,10 +150,17 @@ export function HeroSection() {
                 size="lg"
                 variant="outline"
                 className="group"
-                onClick={() => window.open('/resume.pdf', '_blank')}
+                asChild
               >
-                <Download className="w-4 h-4 mr-2 group-hover:translate-y-1 transition-transform" />
-                Download Resume
+                <a
+                  href="https://drive.google.com/file/d/1Wr0rt4ivdyNs-WSEbeEwhiDoyLc6RL1k/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View Resume (opens in new tab)"
+                >
+                  <Download className="w-4 h-4 mr-2 group-hover:translate-y-1 transition-transform" />
+                  View Resume
+                </a>
               </Button>
             </motion.div>
 

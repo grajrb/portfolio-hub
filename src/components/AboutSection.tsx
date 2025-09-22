@@ -29,12 +29,12 @@ export const AboutSection = () => {
             <div className="flex flex-wrap gap-4 mb-8">
               <a
                 className="button button-hover-effect group"
-                href="https://drive.google.com/file/d/1XQSmRdVuVP5S4k4TFD9TO9hQ6G9xuK6Q/view?usp=sharing"
+                href="https://drive.google.com/file/d/1Wr0rt4ivdyNs-WSEbeEwhiDoyLc6RL1k/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Download Resume"
+                aria-label="View Resume"
               >
-                <FileText size={18} className="mr-2" /> Download Resume
+                <FileText size={18} className="mr-2" /> View Resume
               </a>
               <a
                 className="button button-outline button-hover-effect"
