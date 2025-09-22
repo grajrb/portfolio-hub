@@ -52,7 +52,7 @@ jobs:
 
       - name: Deployment URL
         if: steps.vercel.outputs.preview-url
-        run: echo "Preview URL: ${{ steps.vercel.outputs.preview-url }}"
+        run: echo "Deployment finished (prod=${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }})"
 
       - name: Done
         run: echo "Deployment finished (prod=${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }})"
