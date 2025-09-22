@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: '%s | Gaurav Raj Portfolio',
     default: 'Gaurav Raj - Full Stack Developer & Software Engineer',
   },
-  description: 'Portfolio of Gaurav Raj - Full-Stack Developer with 1.9+ years of experience at Bosch Global Software Technologies. Expert in React.js, Node.js, microservices, and cloud technologies.',
+  description: 'Portfolio of Gaurav Raj - Full-Stack Developer with 2 years of experience at Bosch Global Software Technologies. Expert in React.js, Node.js, microservices, and cloud technologies.',
   keywords: [
     'Gaurav Raj',
     'Full Stack Developer',
@@ -47,16 +47,16 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Gaurav Raj' }],
   creator: 'Gaurav Raj',
-  metadataBase: new URL('https://grajrb.github.io/portfolio-hub'),
+  metadataBase: new URL('https://portfolio-hub-chi.vercel.app'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://grajrb.github.io/portfolio-hub',
+  url: 'https://portfolio-hub-chi.vercel.app',
     title: 'Gaurav Raj - Full Stack Developer & Software Engineer',
-    description: 'Portfolio of Gaurav Raj - Full-Stack Developer with 1.9+ years of experience. Expert in React.js, Node.js, microservices, and cloud technologies.',
+    description: 'Portfolio of Gaurav Raj - Full-Stack Developer with 2 years of experience. Expert in React.js, Node.js, microservices, and cloud technologies.',
     siteName: 'Gaurav Raj Portfolio',
   },
   twitter: {

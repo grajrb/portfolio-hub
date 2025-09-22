@@ -114,7 +114,7 @@ export function HeroSection() {
               variants={itemVariants}
               className="text-xl text-muted-foreground mb-8 max-w-xl leading-relaxed"
             >
-              Results-driven Full-Stack Developer with 1.9+ years of experience architecting scalable, 
+              Results-driven Full-Stack Developer with 2 years of experience architecting scalable, 
               cloud-native applications. Proficient in MERN stack, microservices, and system design principles.
             </motion.p>
 

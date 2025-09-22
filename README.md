@@ -4,12 +4,24 @@ A modern, feature-rich portfolio website built with Next.js 14, featuring AI int
 
 ## Features
 
-- **Hero Section**: Highlight your role and tagline with a visually appealing introduction.
-- **About Section**: Share your background, skills, and experience.
-- **Skills Section**: Display your technical expertise with categorized skill levels.
-- **Projects Section**: Showcase your completed projects with descriptions and links.
-- **Contact Section**: Provide a form for visitors to reach out and links to your social profiles.
-- **Footer**: Include copyright information and links to legal pages.
+
+### Current Status
+
+Some sections are still in active development and will show an "under construction" placeholder or custom 404 message:
+
+- Newsletter
+- Resources
+- Tools & Resources
+
+These will roll out incrementally with curated content, developer utilities, and long-form articles.
+
+### Quick Links
+
+- Portfolio: [https://portfolio-hub-chi.vercel.app](https://portfolio-hub-chi.vercel.app)
+- Resume (Drive): [Google Drive Link](https://drive.google.com/file/d/1Wr0rt4ivdyNs-WSEbeEwhiDoyLc6RL1k/view?usp=sharing)
+- LinkedIn: [linkedin.com/in/gaurav-raj1](https://www.linkedin.com/in/gaurav-raj1/)
+- GitHub: [github.com/grajrb](https://github.com/grajrb)
+- LeetCode: [leetcode.com/u/gauravraj_9](https://leetcode.com/u/gauravraj_9/)
 
 ## Technologies Used
 
@@ -50,7 +62,7 @@ Start the development server with auto-reloading and an instant preview:
 
 ```bash
 npm run dev
-```
+```bash
 
 ### Build
 
@@ -108,8 +120,10 @@ This project is licensed under the [MIT License](./LICENSE).
 
 For any inquiries, feel free to reach out:
 
-- **Email**: gauravupadhayay9801@gmail.com
+- **Email**: [gauravupadhayay9801@gmail.com](mailto:gauravupadhayay9801@gmail.com)
 - **GitHub**: [grajrb](https://github.com/grajrb)
 - **LinkedIn**: [Gaurav Raj](https://www.linkedin.com/in/gaurav-raj1/)
 - **LeetCode**: [gauravraj_9](https://leetcode.com/u/gauravraj_9/)
 - **Location**: Coimbatore, Tamil Nadu, India
+- **Portfolio**: [portfolio-hub-chi.vercel.app](https://portfolio-hub-chi.vercel.app/)
+- **Resume (Drive)**: [Resume (Drive)](https://drive.google.com/file/d/1Wr0rt4ivdyNs-WSEbeEwhiDoyLc6RL1k/view?usp=sharing)

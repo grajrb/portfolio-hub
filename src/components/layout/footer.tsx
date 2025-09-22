@@ -45,36 +45,15 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { 
-    name: 'GitHub', 
-    href: 'https://github.com/grajrb', 
-    icon: Github,
-    color: 'hover:text-gray-900 dark:hover:text-gray-100'
-  },
-  { 
-    name: 'LinkedIn', 
-    href: 'https://linkedin.com/in/yourprofile', 
-    icon: Linkedin,
-    color: 'hover:text-blue-600'
-  },
-  { 
-    name: 'Twitter', 
-    href: 'https://twitter.com/yourhandle', 
-    icon: Twitter,
-    color: 'hover:text-blue-400'
-  },
-  { 
-    name: 'Email', 
-    href: 'mailto:your.email@example.com', 
-    icon: Mail,
-    color: 'hover:text-red-500'
-  },
+  { name: 'GitHub', href: 'https://github.com/grajrb', icon: Github, color: 'hover:text-gray-900 dark:hover:text-gray-100' },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/gaurav-raj1/', icon: Linkedin, color: 'hover:text-blue-600' },
+  { name: 'Email', href: 'mailto:gauravupadhayay9801@gmail.com', icon: Mail, color: 'hover:text-red-500' },
 ];
 
 const contactInfo = [
-  { icon: MapPin, text: 'San Francisco, CA' },
-  { icon: Phone, text: '+1 (555) 123-4567' },
-  { icon: Mail, text: 'your.email@example.com' },
+  { icon: MapPin, text: 'Coimbatore, Tamil Nadu, India' },
+  { icon: Phone, text: '+91 7992425448' },
+  { icon: Mail, text: 'gauravupadhayay9801@gmail.com' },
 ];
 
 export function Footer() {

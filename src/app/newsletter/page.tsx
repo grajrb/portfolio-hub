@@ -61,6 +61,8 @@ const stats = [
 ];
 
 export default function NewsletterPage() {
+  // Temporary flag: mark page as under construction; set to false when ready
+  const UNDER_CONSTRUCTION = true;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
@@ -121,6 +123,27 @@ export default function NewsletterPage() {
       setIsSubmitting(false);
     }
   };
+
+  if (UNDER_CONSTRUCTION) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center px-6 py-24 text-center">
+        <div className="max-w-lg">
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">Newsletter Coming Soon</h1>
+          <p className="text-muted-foreground mb-8">
+            I'm building an insightful developer newsletter packed with tutorials, career tips, system design breakdowns, and project deep dives. Check back soon!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button asChild size="lg">
+              <Link href="/">Return Home</Link>
+            </Button>
+            <Button variant="outline" asChild size="lg">
+              <Link href="/contact">Contact Me</Link>
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (isSubscribed) {
     return (

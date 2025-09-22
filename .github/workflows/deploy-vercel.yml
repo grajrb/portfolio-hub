@@ -3,9 +3,9 @@ name: Deploy to Vercel
 on:
   push:
     # Deploy on every branch push. main -> production, others -> preview.
-    branches: [ "**" ]
+    branches: ['**']
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 concurrency:
   group: vercel-deploy-${{ github.ref }}

@@ -19,8 +19,8 @@ const navigation = [
 
 const socialLinks = [
   { name: 'GitHub', href: 'https://github.com/grajrb', icon: Github },
-  { name: 'LinkedIn', href: 'https://linkedin.com/in/yourprofile', icon: Linkedin },
-  { name: 'Email', href: 'mailto:your.email@example.com', icon: Mail },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/gaurav-raj1/', icon: Linkedin },
+  { name: 'Email', href: 'mailto:gauravupadhayay9801@gmail.com', icon: Mail },
 ];
 
 export function StickyNavbar() {
@@ -37,6 +37,15 @@ export function StickyNavbar() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Lock body scroll when mobile menu open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      const original = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = original; };
+    }
+  }, [isMobileMenuOpen]);
 
   const handleNavClick = (href: string, e: React.MouseEvent) => {
     if (href.startsWith('#')) {
@@ -78,6 +87,19 @@ export function StickyNavbar() {
           : 'bg-transparent py-4'
       )}
     >
+      {/* Overlay for mobile menu (blur + darken) */}
+      {isMobileMenuOpen && (
+        <motion.div
+          key="overlay"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          className="fixed inset-0 z-40 bg-background/60 backdrop-blur-md md:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
       <nav className="container-wrapper section-padding">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -166,7 +188,7 @@ export function StickyNavbar() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden"
+              className="md:hidden overflow-hidden relative z-50"
             >
               <div className="py-4 space-y-4">
                 {navigation.map((item, index) => (

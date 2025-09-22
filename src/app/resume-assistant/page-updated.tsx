@@ -41,16 +41,17 @@ import {
 
 // Updated resume data with Gaurav's information
 const resumeData = {
-  personal: {
+    personal: {
     name: "Gaurav Raj",
     email: "gauravupadhayay9801@gmail.com",
     phone: "+91-7992425448",
-    linkedin: "gaurav-raj",
+    linkedin: "gaurav-raj1",
     github: "grajrb",
-    portfolio: "https://grajrb.github.io/portfolio-hub/",
-    leetcode: "gauravraj_9"
+    portfolio: "https://portfolio-hub-chi.vercel.app/",
+    leetcode: "gauravraj_9",
+    resumeDrive: "https://drive.google.com/file/d/1Wr0rt4ivdyNs-WSEbeEwhiDoyLc6RL1k/view?usp=sharing"
   },
-  objective: "Results-driven Full-Stack Developer with 1.9+ years of experience, now with advanced expertise in architecting and deploying scalable, cloud-native applications. Proficient in MERN stack, microservices, and system design principles. Seeking to leverage comprehensive skills in Node.js, React, DevOps, and cloud platforms to build robust, high-performance software solutions.",
+  objective: "Results-driven Full-Stack Developer with 2 years of experience, now with advanced expertise in architecting and deploying scalable, cloud-native applications. Proficient in MERN stack, microservices, and system design principles. Seeking to leverage comprehensive skills in Node.js, React, DevOps, and cloud platforms to build robust, high-performance software solutions.",
   
   experience: [
     {

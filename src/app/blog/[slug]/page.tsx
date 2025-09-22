@@ -538,7 +538,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground mb-4">
-                Gaurav is a passionate full-stack developer with 1.9+ years of experience in building scalable web applications. 
+                Gaurav is a passionate full-stack developer with 2 years of experience in building scalable web applications. 
                 He specializes in React.js, Node.js, and cloud technologies, with a proven track record of delivering 
                 high-impact solutions that reduce operational costs and improve performance.
               </p>

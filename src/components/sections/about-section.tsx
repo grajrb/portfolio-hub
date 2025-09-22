@@ -33,7 +33,7 @@ const stats = [
   { icon: Code2, label: 'Projects Completed', value: '15+', color: 'text-blue-500' },
   { icon: Rocket, label: 'Technologies Mastered', value: '20+', color: 'text-green-500' },
   { icon: Users, label: 'Team Collaborations', value: '5+', color: 'text-purple-500' },
-  { icon: Trophy, label: 'Years Experience', value: '1.9+', color: 'text-orange-500' },
+  { icon: Trophy, label: 'Years Experience', value: '2', color: 'text-orange-500' },
 ];
 
 const skills = [
@@ -70,7 +70,7 @@ export function AboutSection() {
             <span className="text-primary"> Experiences</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            I'm a results-driven full-stack developer with 1.9+ years of experience architecting 
+            I'm a results-driven full-stack developer with 2 years of experience architecting 
             scalable, cloud-native applications and leading technical innovations.
           </p>
         </motion.div>
@@ -83,10 +83,10 @@ export function AboutSection() {
                 variants={itemVariants}
                 className="text-lg text-muted-foreground leading-relaxed"
               >
-                With 1.9+ years of experience in full-stack development at Bosch Global Software Technologies, 
+                With 2 years of experience in full-stack development at Bosch Global Software Technologies, 
                 I specialize in building automation tools and employee portals using React.js and Node.js microservices. 
                 As a Product Owner, I successfully led the VS Code migration strategy, achieving a 26% adoption rate 
-                and realizing ₹870K in operational savings.
+                and realizing €870K in operational savings.
               </motion.p>
               
               <motion.p 
