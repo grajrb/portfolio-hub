@@ -121,7 +121,7 @@ export function ContactSection() {
               budget: data.budget || 'N/A',
               timeline: data.timeline || 'N/A'
             },
-            { publicKey: EMAILJS_PUBLIC_KEY }
+            EMAILJS_PUBLIC_KEY
           );
           emailSent = true;
         } catch (err) {
