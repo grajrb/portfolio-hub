@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Github, Linkedin } from 'lucide-react';
 
 export const HeroSection = () => {
   return (
@@ -51,6 +51,57 @@ export const HeroSection = () => {
               >
                 <a href="mailto:gauravupadhayay9801@gmail.com">
                   Contact Me
+                </a>
+              </Button>
+
+              {/* GitHub */}
+              <Button size="lg" variant="outline" className="button-hover-effect" asChild>
+                <a
+                  href="https://github.com/grajrb"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
+                  <Github size={18} className="mr-2" /> GitHub
+                </a>
+              </Button>
+
+              {/* LinkedIn */}
+              <Button size="lg" variant="outline" className="button-hover-effect" asChild>
+                <a
+                  href="https://www.linkedin.com/in/gaurav-raj1/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin size={18} className="mr-2" /> LinkedIn
+                </a>
+              </Button>
+
+              {/* LeetCode */}
+              <Button size="lg" variant="outline" className="button-hover-effect" asChild>
+                <a
+                  href="https://leetcode.com/u/gauravraj_9/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LeetCode"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="mr-2"
+                  >
+                    <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+                    <path d="m14.5 15 3 3 3-3" />
+                  </svg>
+                  LeetCode
                 </a>
               </Button>
             </div>

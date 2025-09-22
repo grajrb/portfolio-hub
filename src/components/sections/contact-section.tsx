@@ -209,10 +209,10 @@ export function ContactSection() {
                         className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         <option value="">Select budget range</option>
-                        <option value="under-5k">Under $5,000</option>
-                        <option value="5k-15k">$5,000 - $15,000</option>
-                        <option value="15k-30k">$15,000 - $30,000</option>
-                        <option value="30k-plus">$30,000+</option>
+                        <option value="under-5k">Under ₹5,000</option>
+                        <option value="5k-15k">₹5,000 - ₹15,000</option>
+                        <option value="15k-30k">₹15,000 - ₹30,000</option>
+                        <option value="30k-plus">₹30,000+</option>
                         <option value="discuss">Let's discuss</option>
                       </select>
                     </div>
@@ -341,7 +341,7 @@ export function ContactSection() {
                   <span className="font-semibold">Current Availability</span>
                 </div>
                 <p className="text-sm text-muted-foreground mb-4">
-                  I'm currently accepting new projects for Q2 2024. 
+                  I'm currently accepting new projects for Q4 2025. 
                   Let's discuss your timeline and requirements.
                 </p>
                 <div className="flex items-center space-x-2">

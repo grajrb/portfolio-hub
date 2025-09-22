@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Github, Linkedin } from 'lucide-react';
@@ -14,8 +14,10 @@ const navLinks = [
 
 export const Navbar = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
+	const [hidden, setHidden] = useState(false);
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const [activeSection, setActiveSection] = useState('home');
+	const lastScrollYRef = useRef(0);
 
 	// Add a scroll function to handle navigation
 	const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -32,34 +34,44 @@ export const Navbar = () => {
 
 	useEffect(() => {
 		const handleScroll = () => {
-			setIsScrolled(window.scrollY > 10);
+			const currentY = window.scrollY;
+			setIsScrolled(currentY > 10);
+
+			// Auto-hide logic: hide when scrolling down beyond 120px, show when scrolling up or at top.
+			if (!mobileMenuOpen) {
+				if (currentY > 120 && currentY > lastScrollYRef.current) {
+					setHidden(true);
+				} else {
+					setHidden(false);
+				}
+			}
 
 			// Update active section based on scroll position
 			const sections = document.querySelectorAll('section[id]');
-			const scrollPosition = window.scrollY + 100;
-
+			const scrollPosition = currentY + 100;
 			sections.forEach((section) => {
-				const sectionTop = (section as HTMLElement).offsetTop;
-				const sectionHeight = section.clientHeight;
+				const el = section as HTMLElement;
+				const sectionTop = el.offsetTop;
+				const sectionHeight = el.clientHeight;
 				const sectionId = section.getAttribute('id') || '';
-
 				if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
 					setActiveSection(sectionId);
 				}
 			});
+
+			lastScrollYRef.current = currentY;
 		};
 
 		window.addEventListener('scroll', handleScroll, { passive: true });
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-		};
-	}, []);
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, [mobileMenuOpen]);
 
 	return (
 		<header
 			className={cn(
-				'fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-black text-white shadow-lg',
+				'fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-black text-white shadow-lg will-change-transform',
 				isScrolled ? 'py-3' : 'py-5',
+				hidden ? '-translate-y-full' : 'translate-y-0'
 			)}
 			aria-label="Main navigation"
 		>
