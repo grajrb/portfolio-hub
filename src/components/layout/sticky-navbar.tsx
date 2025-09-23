@@ -16,7 +16,8 @@ const navigation = [
   { name: 'Skills', href: '/#skills' },
   { name: 'Projects', href: '/#projects' },
   { name: 'Contact', href: '/#contact' },
-  { name: 'Newsletter', href: '/newsletter' },
+  // Disabled: Newsletter (coming soon)
+  // { name: 'Newsletter', href: '/newsletter' },
 ];
 
 const socialLinks = [
@@ -208,7 +209,7 @@ export function StickyNavbar() {
             className="md:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            <AnimatePresence mode="wait">
+            <AnimatePresence>
               <motion.div
                 key={isMobileMenuOpen ? 'close' : 'menu'}
                 initial={{ opacity: 0, rotate: -90 }}

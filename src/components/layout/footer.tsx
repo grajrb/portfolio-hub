@@ -33,14 +33,15 @@ const footerLinks = {
     { name: 'Code Review', href: '/#contact' },
   ],
   tools: [
-    { name: 'Resume Assistant', href: '/resume-assistant' },
-    { name: 'Newsletter', href: '/newsletter' },
-    { name: 'Blog', href: '/#' },
-    { name: 'Resources', href: '/#' },
+    // Disabled feature links (coming soon)
+    { name: 'Resume Assistant', href: '/resume-assistant', disabled: true },
+    { name: 'Newsletter', href: '/newsletter', disabled: true },
+    { name: 'Blog', href: '/#', disabled: true },
+    { name: 'Resources', href: '/#', disabled: true },
   ],
   legal: [
-    { name: 'Privacy Policy', href: '/privacy' },
-    { name: 'Terms of Service', href: '/terms' },
+    { name: 'Privacy Policy', href: '/privacy', disabled: true },
+    { name: 'Terms of Service', href: '/terms', disabled: true },
   ],
 };
 
@@ -174,16 +175,16 @@ export function Footer() {
               <h3 className="font-semibold mb-4">Tools & Resources</h3>
               <div className="space-y-3 mb-8">
                 {footerLinks.tools.map((link) => (
-                  <Link
+                  <div
                     key={link.name}
-                    href={link.href}
-                    className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
+                    className={`flex items-center space-x-2 text-sm transition-colors group ${link.disabled ? 'text-muted-foreground/50 cursor-not-allowed select-none' : 'text-muted-foreground hover:text-foreground'}`}
+                    title={link.disabled ? 'Coming soon' : undefined}
                   >
                     <span>{link.name}</span>
-                    {link.href.startsWith('http') && (
+                    {!link.disabled && link.href.startsWith('http') && (
                       <ExternalLink size={12} className="group-hover:translate-x-0.5 transition-transform" />
                     )}
-                  </Link>
+                  </div>
                 ))}
               </div>
 
@@ -206,7 +207,8 @@ export function Footer() {
         </div>
 
         {/* Newsletter Signup */}
-        <motion.div
+        {/* Newsletter signup temporarily disabled */}
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
@@ -223,7 +225,7 @@ export function Footer() {
               </Link>
             </Button>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Bottom Bar */}
         <Separator />
@@ -247,13 +249,13 @@ export function Footer() {
               className="flex items-center space-x-6 text-sm"
             >
               {footerLinks.legal.map((link) => (
-                <Link
+                <span
                   key={link.name}
-                  href={link.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-muted-foreground/50 cursor-not-allowed select-none"
+                  title="Temporarily disabled"
                 >
                   {link.name}
-                </Link>
+                </span>
               ))}
               
               <Badge variant="outline" className="text-xs">

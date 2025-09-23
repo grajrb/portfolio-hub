@@ -148,11 +148,22 @@ export function ContactSection() {
         if (response.ok) {
           apiStored = true;
         } else {
-          apiError = await response.json().catch(() => ({}));
+          const status = response.status;
+            apiError = await response.json().catch(() => ({}));
+            toast({
+              title: 'Contact API issue',
+              description: `Failed storing message (status ${status}). ${status === 404 ? 'Endpoint not found in deployed build.' : 'Will retry later.'}`,
+              variant: 'destructive'
+            });
         }
       } catch (err) {
         apiError = err;
         console.error('Contact API store failed', err);
+        toast({
+          title: 'Network error',
+          description: 'Could not reach contact endpoint. Check deployment /api/contact route.',
+          variant: 'destructive'
+        });
       }
 
       const duration = Math.round(performance.now() - start);
