@@ -1,2 +1,2 @@
-// Legacy BlogList removed. Keeping empty stub to avoid accidental import errors.
-export {}; 
+// Deprecated legacy BlogList page - not used by Next.js App Router.
+export default function BlogList() { return null; }
