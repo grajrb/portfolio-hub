@@ -85,7 +85,7 @@ export function SkillsSection() {
   const [activeTab, setActiveTab] = useState('frontend');
 
   return (
-    <section id="skills" className="py-20 bg-gradient-to-b from-secondary/10 to-background">
+  <section id="skills" className="py-20 bg-gradient-to-b from-secondary/10 to-background scroll-mt-28 md:scroll-mt-32">
       <motion.div 
         ref={ref}
         className="container max-w-6xl mx-auto px-6"

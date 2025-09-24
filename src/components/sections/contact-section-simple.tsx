@@ -236,7 +236,7 @@ export function ContactSection() {
   }, [reset]);
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-secondary/10 to-background">
+  <section id="contact" className="py-20 bg-gradient-to-b from-secondary/10 to-background scroll-mt-28 md:scroll-mt-32">
       <motion.div 
         ref={ref}
         className="container max-w-6xl mx-auto px-6"

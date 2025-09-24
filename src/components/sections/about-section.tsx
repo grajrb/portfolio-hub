@@ -52,7 +52,7 @@ export function AboutSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-background to-secondary/10">
+  <section id="about" className="py-20 bg-gradient-to-b from-background to-secondary/10 scroll-mt-28 md:scroll-mt-32">
       <motion.div 
         ref={ref}
         variants={containerVariants}
