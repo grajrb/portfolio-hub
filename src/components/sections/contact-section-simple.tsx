@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState, useCallback, useEffect } from 'react';
+import { useRef, useState, useCallback } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
@@ -11,7 +11,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { useToast } from '@/components/ui/use-toast';
 import { 
   Send, 
   Mail, 
@@ -82,33 +81,14 @@ const services = [
 export function ContactSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  // submitState drives button UI & prevents duplicate toasts
-  const [submitState, setSubmitState] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
-  const isSubmitting = submitState === 'sending';
-  const lastSuccessToastAt = useRef<number>(0);
-  const inFlightRef = useRef(false);
-  const resetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const watchdogTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const emailSentRef = useRef(false);
-  const apiStoredRef = useRef(false);
-  const submitStateRef = useRef<'idle' | 'sending' | 'sent' | 'error'>('idle');
-
-  const updateSubmitState = (next: 'idle' | 'sending' | 'sent' | 'error') => {
-    const prev = submitStateRef.current;
-    submitStateRef.current = next;
-    setSubmitState(next);
-    console.log('[ContactForm] State change', { from: prev, to: next });
-  };
-  // Use refs for values that should not trigger re-renders
-  const mountedAtRef = useRef<number>(performance.now());
-  const successHandledRef = useRef(false);
-  const { toast } = useToast();
-
-  // Reset guards when component mounts
-  useEffect(() => {
-    mountedAtRef.current = performance.now();
-    successHandledRef.current = false;
-  }, []);
+  
+  // Simplified state - no refs in dependencies, no complex guards
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [buttonText, setButtonText] = useState('Send Message');
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const successTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const processingRef = useRef(false);
+  // Removed toast usage per request – inline confirmation instead
 
   const {
     register,
@@ -120,205 +100,140 @@ export function ContactSection() {
   });
 
   const onSubmit = useCallback(async (data: FormData) => {
-    const submissionId = Math.random().toString(36).slice(2, 10);
-  console.log('[ContactForm] onSubmit invoked', { submissionId, inFlight: inFlightRef.current, state: submitStateRef.current, successHandled: successHandledRef.current });
-    if (inFlightRef.current) {
-  console.log('[ContactForm] Aborting: already in-flight', { submissionId });
-      return; // guard against accidental double trigger
+    if (processingRef.current) {
+      console.log('[ContactForm] Already processing, ignored');
+      return;
     }
-    // Basic honeypot check
-    if (data.company) {
-      console.warn('[ContactForm] Honeypot field filled; dropping submission', { submissionId });
-      return; // silently drop bot submission
-    }
+    processingRef.current = true;
+    setIsSubmitting(true);
+  setShowSuccessMessage(false);
+  setButtonText('Sending...');
+    console.log('[ContactForm] Start');
 
-    // Simple time-to-complete anti-bot guard (ignore ultra-fast submissions < 700ms)
-    const now = performance.now();
-    if (now - mountedAtRef.current < 700) {
-  console.warn('[ContactForm] Blocked fast submit', { submissionId, elapsed: now - mountedAtRef.current });
-      toast({
-        title: 'Submission ignored',
-        description: 'Form submitted too quickly. If you are human, please try again.',
-        variant: 'destructive'
-      });
-      trackEvent({ category: 'contact', action: 'blocked-fast-submit', meta: { elapsed: now - mountedAtRef.current } });
+    // Honeypot: silently abort
+    if (data.company) {
+      console.log('[ContactForm] Honeypot triggered – abort');
+      processingRef.current = false;
+      setIsSubmitting(false);
+      setButtonText('Send Message');
       return;
     }
 
-  updateSubmitState('sending');
-  inFlightRef.current = true;
-  successHandledRef.current = false; // reset per submission
-  console.log('[ContactForm] Submission started', { submissionId, data });
-  emailSentRef.current = false;
-  apiStoredRef.current = false;
-  if (watchdogTimerRef.current) clearTimeout(watchdogTimerRef.current);
-  watchdogTimerRef.current = setTimeout(() => {
-    if (submitStateRef.current === 'sending') {
-  console.warn('[ContactForm] Watchdog: still sending after 10s, forcing resolution', { submissionId, emailSent: emailSentRef.current, apiStored: apiStoredRef.current });
-      updateSubmitState(emailSentRef.current || apiStoredRef.current ? 'sent' : 'error');
-    }
-  }, 10000);
+  let successReported = false; // ensures success handling only once
+    let emailSent = false;
+    let apiStored = false;
 
-  // helper to apply timeout to a promise
-  const withTimeout = async <T,>(p: Promise<T>, ms: number, label: string): Promise<T> => {
-    let to: ReturnType<typeof setTimeout>;
-    const timeoutPromise = new Promise<never>((_, reject) => {
-      to = setTimeout(() => {
-  console.warn('[ContactForm] Timeout', { submissionId, label, ms });
-        reject(new Error(label + ' timeout'));
-      }, ms);
-    });
-    try {
-      return await Promise.race([p, timeoutPromise]);
-    } finally {
-      clearTimeout(to!);
-    }
-  };
-    const start = performance.now();
-  let emailSent = false;
-  let apiStored = false;
-  let emailError: unknown = null;
-  let apiError: unknown = null;
+    const reportSuccess = (source: string) => {
+      if (successReported) return;
+      successReported = true;
+      console.log(`[ContactForm] Success via ${source}`);
+      trackEvent({
+        category: 'contact',
+        action: 'sent',
+        meta: { email: emailSent, stored: apiStored, source }
+      });
+      reset();
+      setShowSuccessMessage(true);
+      setIsSubmitting(false);
+      setButtonText('Send Message');
+      processingRef.current = false;
+      if (successTimerRef.current) clearTimeout(successTimerRef.current);
+      successTimerRef.current = setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 3000);
+    };
 
-    try {
-      // Run email + API in parallel so UI can resolve quickly.
-      const emailTask = (async () => {
-        if (!(EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY)) return;
-        try {
-          await withTimeout(
-            emailjs.send(
-              EMAILJS_SERVICE_ID,
-              EMAILJS_TEMPLATE_ID,
-              {
-                from_name: data.name,
-                reply_to: data.email,
-                subject: data.subject,
-                message: data.message,
-                budget: data.budget || '',
-                timeline: data.timeline || ''
-              },
-              EMAILJS_PUBLIC_KEY
-            ),
-            15000,
-            'email'
-          );
-          emailSent = true;
-          emailSentRef.current = true;
-          console.log('[ContactForm] EmailJS success', { submissionId });
-        } catch (err) {
-          emailError = err;
-          console.error('EmailJS send failed', err);
-          console.log('[ContactForm] EmailJS failure', { submissionId, err });
-        }
-      })();
+    const handleFailure = (final = false) => {
+      if (successReported) return;
+      if (final) {
+        trackEvent({ category: 'contact', action: 'failure' });
+        setButtonText('Retry?');
+        setTimeout(() => {
+          setIsSubmitting(false);
+          processingRef.current = false;
+        }, 2500);
+      }
+    };
 
-      const apiTask = (async () => {
-        try {
-          const controller = new AbortController();
-          const apiTimeout = setTimeout(() => controller.abort(), 15000);
-          const response = await fetch('/api/contact', {
-            method: 'POST',
+    // --- Start operations in parallel ---
+    const startTime = Date.now();
+
+    const emailPromise = (async () => {
+      if (!(EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY)) return false;
+      try {
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          {
+            from_name: data.name,
+            reply_to: data.email,
+            subject: data.subject,
+            message: data.message,
+            budget: data.budget || '',
+            timeline: data.timeline || ''
+          },
+          EMAILJS_PUBLIC_KEY
+        );
+        emailSent = true;
+        reportSuccess('email');
+        return true;
+      } catch (e) {
+        console.warn('[ContactForm] Email error', e);
+        return false;
+      }
+    })();
+
+    const apiPromise = (async () => {
+      try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 12000); // 12s network timeout
+        const res = await fetch('/api/contact', {
+          method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              name: data.name,
-              email: data.email,
-              subject: data.subject,
-              message: data.message,
-              budget: data.budget || '',
-              timeline: data.timeline || '',
-            }),
-            signal: controller.signal
-          });
-          clearTimeout(apiTimeout);
-          if (response.ok) {
-            apiStored = true;
-            apiStoredRef.current = true;
-            console.log('[ContactForm] API store success', { submissionId });
-          } else {
-            const status = response.status;
-            apiError = await response.json().catch(() => ({}));
-            console.log('[ContactForm] API store non-200', { submissionId, status, apiError });
-            toast({
-              title: 'Contact API issue',
-              description: `Failed storing message (status ${status}). ${status === 404 ? 'Endpoint not found in deployed build.' : 'Will retry later.'}`,
-              variant: 'destructive'
-            });
-          }
-        } catch (err) {
-          apiError = err;
-            console.error('Contact API store failed', err);
-            console.log('[ContactForm] API store network/abort error', { submissionId, err });
-            toast({
-              title: 'Network error',
-              description: 'Could not reach contact endpoint. Check deployment /api/contact route.',
-              variant: 'destructive'
-            });
+            name: data.name,
+            email: data.email,
+            subject: data.subject,
+            message: data.message,
+            budget: data.budget || '',
+            timeline: data.timeline || ''
+          }),
+          signal: controller.signal
+        });
+        clearTimeout(timeout);
+        if (res.ok) {
+          apiStored = true;
+          reportSuccess('api');
+          return true;
         }
-      })();
-
-      await Promise.allSettled([emailTask, apiTask]);
-
-      const duration = Math.round(performance.now() - start);
-
-      if (emailSent) {
-        if (!successHandledRef.current) {
-          if (Date.now() - lastSuccessToastAt.current > 1200) {
-            toast({
-              title: 'Message sent successfully!',
-              description: `Thanks for reaching out. I'll get back to you soon. (${duration}ms)`
-            });
-            lastSuccessToastAt.current = Date.now();
-          }
-          trackEvent({ category: 'contact', action: 'sent', meta: { duration, email: true, stored: apiStored } });
-          reset();
-          updateSubmitState('sent');
-          if (resetTimerRef.current) clearTimeout(resetTimerRef.current);
-          resetTimerRef.current = setTimeout(() => updateSubmitState('idle'), 3000);
-          successHandledRef.current = true;
-          console.log('[ContactForm] Success path: emailSent', { submissionId });
-        }
-      } else if (apiStored) {
-        if (!successHandledRef.current) {
-          toast({
-            title: 'Message stored',
-            description: 'Your message was saved but email notification failed. I will still review it shortly.'
-          });
-          trackEvent({ category: 'contact', action: 'stored-only', meta: { duration, emailError: !!emailError } });
-          reset();
-          updateSubmitState('sent');
-          if (resetTimerRef.current) clearTimeout(resetTimerRef.current);
-          resetTimerRef.current = setTimeout(() => updateSubmitState('idle'), 3000);
-          successHandledRef.current = true;
-          console.log('[ContactForm] Success path: storedOnly', { submissionId });
-        }
-      } else {
-        console.log('[ContactForm] Failure path: neither email nor store succeeded', { submissionId, emailError, apiError });
-        throw new Error('Both email and storage failed');
+        return false;
+      } catch (e) {
+        console.warn('[ContactForm] API error', e);
+        return false;
       }
-    } catch (err) {
-      toast({
-        title: 'Failed to send message',
-        description: 'Please try again or contact me directly via email.',
-        variant: 'destructive'
-      });
-      trackEvent({ category: 'contact', action: 'failure', meta: { emailError: !!emailError, apiError: !!apiError } });
-      updateSubmitState('error');
-      if (resetTimerRef.current) clearTimeout(resetTimerRef.current);
-      resetTimerRef.current = setTimeout(() => updateSubmitState('idle'), 4000);
-      console.log('[ContactForm] Error handler executed', { submissionId, emailError, apiError });
-    } finally {
-      inFlightRef.current = false;
-      console.log('[ContactForm] Submission finished', { submissionId, emailSent, apiStored, finalState: submitStateRef.current });
-    }
-  }, [toast, reset]);
+    })();
 
-  // Cleanup any pending timers on unmount
-  useEffect(() => {
-    return () => {
-      if (resetTimerRef.current) clearTimeout(resetTimerRef.current);
-      if (watchdogTimerRef.current) clearTimeout(watchdogTimerRef.current);
-    };
-  }, []);
+    // (Removed Sent! fallback logic – immediate revert to Send Message)
+
+    // Global timeout (safety net) – if after 14s no success, mark failure
+    const globalTimeout = setTimeout(() => {
+      if (!successReported) {
+        handleFailure(true);
+      }
+    }, 14000);
+
+    // Wait for both to settle (does not block early success UI; reportSuccess triggers earlier)
+    Promise.allSettled([emailPromise, apiPromise]).then(results => {
+      clearTimeout(globalTimeout);
+      const anySuccess = results.some(r => r.status === 'fulfilled' && r.value === true);
+      if (!anySuccess) {
+        // If neither succeeded and we haven't reported success, finalize failure promptly
+        handleFailure(true);
+      } else {
+        console.log('[ContactForm] All operations settled in', Date.now() - startTime, 'ms');
+      }
+    });
+  }, [reset]);
 
   return (
     <section id="contact" className="py-20 bg-gradient-to-b from-secondary/10 to-background">
@@ -467,28 +382,28 @@ export function ContactSection() {
                       type="submit" 
                       size="lg" 
                       className="w-full group"
-                      disabled={submitState === 'sending' || submitState === 'sent'}
+                      disabled={isSubmitting}
                       aria-live="polite"
                     >
-                      {submitState === 'sending' && (
+                      {isSubmitting && buttonText === 'Sending...' && (
                         <>
                           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                           Sending...
                         </>
                       )}
-                      {submitState === 'sent' && (
+                      {showSuccessMessage && !isSubmitting && buttonText === 'Send Message' && (
                         <>
                           <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-                          Sent!
+                          Send Message
                         </>
                       )}
-                      {submitState === 'error' && (
+                      {buttonText === 'Retry?' && (
                         <>
                           <AlertTriangle className="mr-2 h-4 w-4 text-destructive" />
                           Retry?
                         </>
                       )}
-                      {submitState === 'idle' && (
+                      {buttonText === 'Send Message' && !showSuccessMessage && (
                         <>
                           <Send size={16} className="mr-2 group-hover:translate-x-1 transition-transform" />
                           Send Message
@@ -498,6 +413,11 @@ export function ContactSection() {
                     <p className="text-[11px] text-muted-foreground flex items-center justify-center gap-1">
                       <ShieldCheck className="h-3 w-3" /> Protected by basic anti-spam measures.
                     </p>
+                    {showSuccessMessage && !isSubmitting && (
+                      <div className="text-sm text-green-600 dark:text-green-400 text-center animate-in fade-in slide-in-from-top-1">
+                        Your message has been sent. I'll reply soon.
+                      </div>
+                    )}
                   </div>
                 </form>
               </CardContent>

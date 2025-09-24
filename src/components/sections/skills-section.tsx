@@ -102,7 +102,7 @@ export function SkillsSection() {
           </Badge>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             Technical
-            <span className="text-primary"> Arsenal</span>
+            <span className="text-primary"> Skills </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             A comprehensive toolkit spanning modern web technologies, cloud platforms, 

@@ -4,10 +4,11 @@ import tailwindcssAnimate from "tailwindcss-animate";
 export default {
 	darkMode: ["class"],
 	content: [
-		"./pages/**/*.{ts,tsx}",
-		"./components/**/*.{ts,tsx}",
-		"./app/**/*.{ts,tsx}",
-		"./src/**/*.{ts,tsx}",
+		"./src/app/**/*.{ts,tsx}",
+		"./src/components/**/*.{ts,tsx}",
+		"./components/**/*.{ts,tsx}", // transitional root components folder
+		"./src/lib/**/*.{ts,tsx}",
+		"./src/hooks/**/*.{ts,tsx}",
 	],
 	prefix: "",
 	theme: {
@@ -127,6 +128,11 @@ export default {
 				'underline': {
 					'0%': { width: '0%' },
 					'100%': { width: '100%' }
+					},
+					// Alias for previously referenced animate-fade-in-up utility
+					'fade-in-up': {
+						'0%': { transform: 'translateY(20px)', opacity: '0' },
+						'100%': { transform: 'translateY(0)', opacity: '1' }
 				}
 			},
 			animation: {
@@ -138,7 +144,8 @@ export default {
 				'slide-in-right': 'slide-in-right 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
 				'scale-in': 'scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
 				'reveal': 'reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both',
-				'underline': 'underline 0.3s ease-in-out',
+					'underline': 'underline 0.3s ease-in-out',
+					'fade-in-up': 'fade-in-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards'
 			},
 		},
 	},

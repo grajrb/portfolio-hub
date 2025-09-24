@@ -138,7 +138,7 @@
 
   /* Animation utilities */
   .animate-in {
-    @apply animate-fade-in-up;
+    @apply opacity-0 animate-pulse;
   }
 
   .stagger-children > * {
