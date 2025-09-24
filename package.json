@@ -26,7 +26,7 @@
     "@ai-sdk/openai": "^0.0.39",
     "@emailjs/browser": "^3.2.0",
     "@hookform/resolvers": "^3.9.0",
-    "@prisma/client": "^5.17.0",
+    "@prisma/client": "^6.16.2",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-aspect-ratio": "^1.1.0",
@@ -68,11 +68,9 @@
     "framer-motion": "^11.3.19",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.462.0",
-    "nanoid": "^5.1.5",
     "next": "^14.2.5",
     "next-themes": "^0.3.0",
     "openai": "^4.52.7",
-    "prisma": "^5.17.0",
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1",
@@ -90,14 +88,15 @@
     "@types/node": "^22.5.5",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react-swc": "^3.0.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.0",
-    "@vitejs/plugin-react-swc": "^3.0.0",
     "eslint-config-next": "^14.2.5",
     "husky": "^9.1.4",
     "lint-staged": "^15.2.8",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
+    "prisma": "^6.16.2",
     "tailwindcss": "^3.4.11",
     "typescript": "^5.5.3",
     "vite": "^7.1.6"
@@ -110,5 +109,9 @@
     "**/*.{json,css,md}": [
       "prettier --write"
     ]
+  },
+  "overrides": {
+    "jsondiffpatch": "^0.7.2",
+    "nanoid": "3.3.8"
   }
 }
