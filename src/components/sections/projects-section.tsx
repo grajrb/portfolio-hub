@@ -188,7 +188,7 @@ export function ProjectsSection() {
   };
 
   return (
-  <section id="projects" className="py-20 bg-gradient-to-b from-background to-secondary/10 scroll-mt-28 md:scroll-mt-32">
+  <section id="projects" className="py-20 bg-gradient-to-b from-background to-secondary/10 scroll-mt-32 md:scroll-mt-40 safe-scroll-offset">
       <motion.div 
         ref={ref}
         className="container max-w-7xl mx-auto px-6"

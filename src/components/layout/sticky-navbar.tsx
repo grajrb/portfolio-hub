@@ -72,23 +72,9 @@ export function StickyNavbar() {
     }
   }, [isMobileMenuOpen]);
 
-  const scrollToHash = (hash: string) => {
-    const el = document.querySelector(hash);
-    if (!el) return;
-    // Account for sticky header height (~70px). We'll compute dynamically.
-    const header = document.querySelector('header');
-    const offset = (header?.getBoundingClientRect().height || 70) + 12; // add spacing
-    const top = (el as HTMLElement).getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top, behavior: 'smooth' });
-  };
-
-  const handleNavClick = (href: string, e: React.MouseEvent) => {
+  // With CSS scroll-margin + safe area compensation we rely on native anchor scrolling.
+  const handleNavClick = (href: string) => {
     if (href.startsWith('/#')) {
-      if (window.location.pathname === '/') {
-        e.preventDefault();
-        const hash = href.replace('/', '');
-        scrollToHash(hash);
-      }
       setIsMobileMenuOpen(false);
     }
   };
@@ -153,7 +139,6 @@ export function StickyNavbar() {
             <Link
               href="/"
               className="text-xl font-bold text-primary"
-              onClick={(e) => handleNavClick('#hero', e)}
             >
               Portfolio
             </Link>
@@ -176,7 +161,7 @@ export function StickyNavbar() {
                     activeSection === item.href.replace('/#', '') && 'active',
                     hoveredItem && hoveredItem !== item.name && 'blur-sm opacity-50'
                   )}
-                  onClick={(e) => handleNavClick(item.href, e)}
+                  onClick={() => handleNavClick(item.href)}
                 >
                   {item.name}
                 </Link>
@@ -261,7 +246,7 @@ export function StickyNavbar() {
                           ? 'text-primary'
                           : 'text-muted-foreground hover:text-foreground'
                       )}
-                      onClick={(e) => handleNavClick(item.href, e)}
+                      onClick={() => handleNavClick(item.href)}
                       aria-label={`Go to ${item.name} section`}
                     >
                       {item.name}

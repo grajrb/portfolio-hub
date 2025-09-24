@@ -55,7 +55,7 @@ export function HeroSection() {
   };
 
   return (
-  <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-x-hidden scroll-mt-28 md:scroll-mt-32">
+  <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-x-hidden scroll-mt-32 md:scroll-mt-40 safe-scroll-offset">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 -z-10">
         <motion.div

@@ -1,4 +1,17 @@
 /* ...existing code... */
+
+/* Safe scroll offset utility: combines desired section offset with device safe-area inset (iOS notch etc.) */
+.safe-scroll-offset {
+  /* Base (matches scroll-mt-32 = 8rem) plus any safe-area inset */
+  scroll-margin-top: calc(8rem + env(safe-area-inset-top, 0px));
+}
+@media (min-width: 768px) {
+  .safe-scroll-offset {
+    /* Matches md:scroll-mt-40 = 10rem */
+    scroll-margin-top: calc(10rem + env(safe-area-inset-top, 0px));
+  }
+}
+
 html {
   background-color: var(--tw-bg-light, #f9fafb);
   color: var(--tw-text, #18181b);
