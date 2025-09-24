@@ -76,7 +76,7 @@ const projects = [
     tags: ['TypeScript', 'React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
     category: 'Full-Stack',
     github: 'https://github.com/grajrb/portfolio-hub',
-    demo: 'https://gaurav-portfolio.vercel.app',
+    demo: 'https://portfolio-hub-chi.vercel.app/',
     status: 'Featured',
     stats: { stars: 0, forks: 0, users: '1.2k' },
   },

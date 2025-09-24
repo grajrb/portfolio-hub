@@ -83,12 +83,7 @@ export function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
           {/* Left Content */}
           <div className="lg:col-span-3">
-            <motion.div variants={itemVariants}>
-              <span className="inline-block py-2 px-4 bg-gradient-to-r from-primary/10 to-purple-500/10 border border-primary/20 text-primary text-sm rounded-full mb-6 font-medium">
-                🚀 Full-Stack Developer • Software Engineer @ Bosch
-              </span>
-            </motion.div>
-
+            {/* Heading reordered for mobile: name first, badge below */}
             <motion.h1 
               variants={itemVariants}
               className="font-bold text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-8 leading-tight"
@@ -109,6 +104,11 @@ export function HeroSection() {
                 Gaurav Raj
               </motion.span>
             </motion.h1>
+            <motion.div variants={itemVariants}>
+              <span className="inline-block py-2 px-4 bg-gradient-to-r from-primary/10 to-purple-500/10 border border-primary/20 text-primary text-sm rounded-full mb-6 font-medium order-last md:order-first">
+                🚀 Full-Stack Developer • Software Engineer @ Bosch
+              </span>
+            </motion.div>
 
             <motion.p 
               variants={itemVariants}

@@ -129,7 +129,7 @@ export function SkillsSection() {
                   className="flex items-center space-x-2 data-[state=active]:bg-primary/10"
                 >
                   <category.icon size={16} className={category.color} />
-                  <span className="hidden sm:inline">{category.title.split(' ')[0]}</span>
+                  <span>{category.title.split(' ')[0]}</span>
                 </TabsTrigger>
               ))}
             </TabsList>

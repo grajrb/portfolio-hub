@@ -118,19 +118,24 @@ export function StickyNavbar() {
           : 'bg-transparent py-4'
       )}
     >
+      {/* Blur overlay for mobile menu (re-added) */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.button
+            type="button"
+            key="mobile-blur-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-30 bg-background/60 backdrop-blur-xl md:hidden"
+            aria-label="Close menu"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+        )}
+      </AnimatePresence>
       {/* Overlay for mobile menu (blur + darken) */}
-      {isMobileMenuOpen && (
-        <motion.div
-          key="overlay"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-40 bg-background/60 backdrop-blur-md md:hidden"
-          onClick={() => setIsMobileMenuOpen(false)}
-          aria-hidden="true"
-        />
-      )}
+      {/* No fullscreen overlay in reverted version */}
       <nav className="container-wrapper section-padding">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -223,15 +228,15 @@ export function StickyNavbar() {
           </Button>
         </div>
 
-        {/* Mobile Navigation */}
-        <AnimatePresence>
+        {/* Mobile Navigation (reverted collapsible panel with overlay) */}
+        <AnimatePresence initial={false}>
           {isMobileMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden relative z-50"
+              className="md:hidden overflow-hidden relative z-40"
             >
               <div className="py-4 space-y-4">
                 {navigation.map((item, index) => (
@@ -255,8 +260,6 @@ export function StickyNavbar() {
                     </Link>
                   </motion.div>
                 ))}
-
-                {/* Mobile Social Links */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
