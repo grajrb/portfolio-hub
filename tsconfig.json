@@ -1,6 +1,13 @@
 {
   "files": [],
-  // References removed after consolidation; using single root + app tsconfig include patterns.
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
@@ -8,12 +15,12 @@
         "./src/*"
       ]
     },
-  "noImplicitAny": false, // loosened intentionally; tighten later if desired
-  "noUnusedParameters": false,
+    "noImplicitAny": false,
+    "noUnusedParameters": false,
     "skipLibCheck": true,
     "allowJs": true,
     "noUnusedLocals": false,
-  "strictNullChecks": true,
+    "strictNullChecks": false,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "lib": [
@@ -22,8 +29,7 @@
       "esnext"
     ],
     "noEmit": true,
-  // incremental build cache not needed without project references
-  // "incremental": true,
+    "incremental": true,
     "module": "esnext",
     "esModuleInterop": true,
   // Switched from 'node' to 'bundler' so packages like 'ai/react' with modern export maps resolve during Next.js build.

@@ -26,11 +26,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "src/app",
-    "src/components",
-    "src/lib",
-    "src/hooks",
-    "src/types.d.ts"
-  ]
+  "include": ["src"]
 }
