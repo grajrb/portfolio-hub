@@ -33,7 +33,7 @@ const resumeData = {
     github: "grajrb",
     portfolio: "https://portfolio-hub-chi.vercel.app/",
     leetcode: "gauravraj_9",
-    resumeDrive: "https://drive.google.com/file/d/1Wr0rt4ivdyNs-WSEbeEwhiDoyLc6RL1k/view?usp=sharing"
+    resumeDrive: "https://drive.google.com/file/d/1jMbCCCSAS9bXaRr6Lxu90biP9hOJFlCR/view?usp=sharing"
   },
   summary: "Results-driven Full-Stack Developer with 2.0 years of experience architecting and deploying scalable, cloud-native applications. Expert in MERN stack, microservices architecture, and system design principles. Proven track record of delivering high-impact solutions that reduce operational costs by €870K and improve performance by 25%.",
   

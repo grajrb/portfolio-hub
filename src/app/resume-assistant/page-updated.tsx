@@ -49,7 +49,7 @@ const resumeData = {
     github: "grajrb",
     portfolio: "https://portfolio-hub-chi.vercel.app/",
     leetcode: "gauravraj_9",
-    resumeDrive: "https://drive.google.com/file/d/1Wr0rt4ivdyNs-WSEbeEwhiDoyLc6RL1k/view?usp=sharing"
+    resumeDrive: "https://drive.google.com/file/d/1jMbCCCSAS9bXaRr6Lxu90biP9hOJFlCR/view?usp=sharingg"
   },
   objective: "Results-driven Full-Stack Developer with 2 years of experience, now with advanced expertise in architecting and deploying scalable, cloud-native applications. Proficient in MERN stack, microservices, and system design principles. Seeking to leverage comprehensive skills in Node.js, React, DevOps, and cloud platforms to build robust, high-performance software solutions.",
   

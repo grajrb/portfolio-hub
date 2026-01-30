@@ -187,7 +187,7 @@ export function StickyNavbar() {
               </motion.a>
             ))}
             <motion.a
-              href="https://drive.google.com/file/d/1Wr0rt4ivdyNs-WSEbeEwhiDoyLc6RL1k/view?usp=sharing"
+              href="https://drive.google.com/file/d/1jMbCCCSAS9bXaRr6Lxu90biP9hOJFlCR/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05, y: -2 }}
@@ -274,7 +274,7 @@ export function StickyNavbar() {
                     </motion.a>
                   ))}
                   <motion.a
-                    href="https://drive.google.com/file/d/1Wr0rt4ivdyNs-WSEbeEwhiDoyLc6RL1k/view?usp=sharing"
+                    href="https://drive.google.com/file/d/1jMbCCCSAS9bXaRr6Lxu90biP9hOJFlCR/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileTap={{ scale: 0.9 }}

@@ -16,7 +16,7 @@ These will roll out incrementally with curated content, developer utilities, and
 ### Quick Links
 
 - Portfolio: [https://portfolio-hub-chi.vercel.app](https://portfolio-hub-chi.vercel.app)
-- Resume (Drive): [Google Drive Link](https://drive.google.com/file/d/1Wr0rt4ivdyNs-WSEbeEwhiDoyLc6RL1k/view?usp=sharing)
+- Resume (Drive): [Google Drive Link](https://drive.google.com/file/d/1jMbCCCSAS9bXaRr6Lxu90biP9hOJFlCR/view?usp=sharing)
 - LinkedIn: [linkedin.com/in/gaurav-raj1](https://www.linkedin.com/in/gaurav-raj1/)
 - GitHub: [github.com/grajrb](https://github.com/grajrb)
 - LeetCode: [leetcode.com/u/gauravraj_9](https://leetcode.com/u/gauravraj_9/)
@@ -124,4 +124,4 @@ For any inquiries, feel free to reach out:
 - **LeetCode**: [gauravraj_9](https://leetcode.com/u/gauravraj_9/)
 - **Location**: Coimbatore, Tamil Nadu, India
 - **Portfolio**: [portfolio-hub-chi.vercel.app](https://portfolio-hub-chi.vercel.app/)
-- **Resume (Drive)**: [Resume (Drive)](https://drive.google.com/file/d/1Wr0rt4ivdyNs-WSEbeEwhiDoyLc6RL1k/view?usp=sharing)
+- **Resume (Drive)**: [Resume (Drive)](https://drive.google.com/file/d/1jMbCCCSAS9bXaRr6Lxu90biP9hOJFlCR/view?usp=sharing)

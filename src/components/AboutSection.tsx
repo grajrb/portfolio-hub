@@ -30,7 +30,7 @@ export const AboutSection = () => {
             <div className="flex flex-wrap gap-4 mb-8">
               <a
                 className="button button-hover-effect group"
-                href="https://drive.google.com/file/d/1Wr0rt4ivdyNs-WSEbeEwhiDoyLc6RL1k/view?usp=sharing"
+                href="https://drive.google.com/file/d/1jMbCCCSAS9bXaRr6Lxu90biP9hOJFlCR/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="View Resume"

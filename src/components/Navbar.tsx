@@ -149,7 +149,7 @@ export const Navbar = () => {
 						</Button>
 					</a>
 					<a
-						href="https://drive.google.com/file/d/1Wr0rt4ivdyNs-WSEbeEwhiDoyLc6RL1k/view?usp=sharing"
+						href="https://drive.google.com/file/d/1jMbCCCSAS9bXaRr6Lxu90biP9hOJFlCR/view?usp=sharing"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="button-hover-effect"
@@ -235,7 +235,7 @@ export const Navbar = () => {
 						</Button>
 					</a>
 					<a
-						href="https://drive.google.com/file/d/1Wr0rt4ivdyNs-WSEbeEwhiDoyLc6RL1k/view?usp=sharing"
+						href="https://drive.google.com/file/d/1jMbCCCSAS9bXaRr6Lxu90biP9hOJFlCR/view?usp=sharing"
 						target="_blank"
 						rel="noopener noreferrer"
 						className="w-full button-hover-effect"
