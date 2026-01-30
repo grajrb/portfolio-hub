@@ -30,10 +30,10 @@ const itemVariants = {
 };
 
 const stats = [
-  { icon: Code2, label: 'Projects Completed', value: '15+', color: 'text-blue-500' },
-  { icon: Rocket, label: 'Technologies Mastered', value: '20+', color: 'text-green-500' },
-  { icon: Users, label: 'Team Collaborations', value: '5+', color: 'text-purple-500' },
-  { icon: Trophy, label: 'Years Experience', value: '2', color: 'text-orange-500' },
+  { icon: Code2, label: 'Projects Completed', value: '20+', color: 'text-blue-500' },
+  { icon: Rocket, label: 'Technologies Mastered', value: '25+', color: 'text-green-500' },
+  { icon: Users, label: 'Team Collaborations', value: '10+', color: 'text-purple-500' },
+  { icon: Trophy, label: 'Years Experience', value: '2.3', color: 'text-orange-500' },
 ];
 
 const skills = [
@@ -42,9 +42,13 @@ const skills = [
   'Node.js & Express.js',
   'PostgreSQL & MongoDB',
   'AWS & Azure',
-  'Docker & Kubernetes',
+  'Docker & Jenkins',
   'CI/CD & DevOps',
   'System Design',
+  'Microservices',
+  'GraphQL & REST APIs',
+  'Redis Caching',
+  'RBAC Systems',
 ];
 
 export function AboutSection() {
@@ -70,8 +74,8 @@ export function AboutSection() {
             <span className="text-primary"> Experiences</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            I'm a results-driven full-stack developer with 2 years of experience architecting 
-            scalable, cloud-native applications and leading technical innovations.
+            I'm a results-driven full-stack developer with 2.3 years of experience architecting and deploying scalable, 
+            cloud-native applications. Expert in MERN stack, microservices architecture, and DevOps practices.
           </p>
         </motion.div>
 
@@ -83,19 +87,20 @@ export function AboutSection() {
                 variants={itemVariants}
                 className="text-lg text-muted-foreground leading-relaxed"
               >
-                With 2 years of experience in full-stack development at Bosch Global Software Technologies, 
-                I specialize in building automation tools and employee portals using React.js and Node.js microservices. 
-                As a Product Owner, I successfully led the VS Code migration strategy, achieving a 26% adoption rate 
-                and realizing €870K in operational savings.
+                At Bosch Global Software Technologies, I architect and develop full-stack automation tools using React.js frontend 
+                and Node.js microservices, reducing manual effort by 20%. As Product Owner, I led the VS Code migration strategy, 
+                achieving 26% user adoption and €870K in operational savings. I've enhanced data-layer performance by 25% through 
+                PostgreSQL optimization and Redis caching, and reduced deployment time by 80% with CI/CD pipelines.
               </motion.p>
               
               <motion.p 
                 variants={itemVariants}
                 className="text-lg text-muted-foreground leading-relaxed"
               >
-                I excel in optimizing system performance through PostgreSQL query optimization and Redis caching, 
-                achieving 25% faster API responses. My expertise spans the entire development lifecycle, from CI/CD 
-                pipeline implementation with Jenkins and Docker on Azure to building secure RBAC systems for B2B fintech platforms.
+                I excel in building secure, scalable systems with strong RBAC implementation across 5 distinct user roles. 
+                My expertise spans the entire development lifecycle, from designing RESTful APIs with 25% faster response times 
+                to implementing Jenkins and Docker CI/CD pipelines on Azure. I'm proficient in microservices architecture, 
+                system design, and distributed systems, with hands-on experience in AWS, Azure, and cloud-native technologies.
               </motion.p>
 
               {/* Skills */}
@@ -174,24 +179,24 @@ export function AboutSection() {
             
             {[
               {
-                year: '2021',
-                title: 'Started Programming Journey',
-                description: 'Began learning web development with HTML, CSS, and JavaScript',
-              },
-              {
-                year: '2022',
-                title: 'Full-Stack Development',
-                description: 'Mastered React, Node.js, and database technologies',
+                year: '2021-2022',
+                title: 'Internship at HighRadius',
+                description: 'Built scalable RESTful APIs with Node.js/Express, achieving 25% faster response times. Implemented RBAC for 5 distinct user roles.',
               },
               {
                 year: '2023',
-                title: 'Professional Experience',
-                description: 'Started working on client projects and building scalable applications',
+                title: 'Education Completion',
+                description: 'Graduated from SRM Institute with 8.74/10 CGPA. CodeChef Global Rank 91 in competitive programming.',
               },
               {
-                year: '2024',
-                title: 'AI Integration Expert',
-                description: 'Specialized in AI/ML integration and modern cloud architecture',
+                year: '2024-Present',
+                title: 'Senior Developer at Bosch GST',
+                description: 'Led VS Code migration achieving 26% adoption and €870K savings. Architected full-stack automation tools. Reduced deployment time by 80%.',
+              },
+              {
+                year: '2024-Present',
+                title: 'Full-Stack & AI Solutions',
+                description: 'Building voice agent analytics platforms, event booking systems, and AI-powered applications with modern cloud architecture.',
               },
             ].map((item, index) => (
               <motion.div

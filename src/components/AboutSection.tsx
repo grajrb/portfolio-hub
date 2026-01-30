@@ -14,17 +14,17 @@ export const AboutSection = () => {
               About <span className="text-primary">Me</span>
             </h2>
             <p className="section-subtitle text-lg md:text-xl text-muted-foreground mb-6">
-              Software Engineer at Bosch Global Software Technologies with expertise in full stack development and DevOps practices.
+              Results-driven Full-Stack Developer with 2.3 years of experience architecting and deploying scalable, cloud-native applications. Expert in MERN stack, microservices architecture, and DevOps practices.
             </p>
             <div className="prose prose-lg max-w-none text-muted-foreground mb-8">
               <p>
-                I am a skilled software engineer with experience in designing, developing, and deploying full-stack applications using modern JavaScript technologies including TypeScript, Node.js, and React.js.
+                I am a skilled full-stack developer with 2.3 years of professional experience in designing, developing, and deploying scalable applications. I specialize in JavaScript/TypeScript, Node.js, and React.js, with expertise in PostgreSQL, MongoDB, and cloud-native technologies.
               </p>
               <p>
-                My expertise includes developing web applications, automating workflows, and implementing DevOps practices. I have hands-on experience with Docker, CI/CD pipelines, and cloud-native technologies. I am proficient in Git, GitHub Actions, and have a strong understanding of system design principles.
+                My professional achievements include delivering €870K in operational savings, achieving 26% user adoption rates in enterprise environments, and reducing deployment times by 80% through CI/CD pipeline implementation. I have hands-on experience with Docker, Jenkins, AWS, Azure, and microservices architecture.
               </p>
               <p>
-                I am a 3-star coder on CodeChef and have achieved a rank of 91 in the CodeChef Long Challenge. I continuously improve my skills through problem-solving and technical challenges.
+                I am a 3-star CodeChef coder with Global Rank 91 in competitive programming. I continuously improve my skills and stay updated with emerging technologies in full-stack development and system design.
               </p>
             </div>
             <div className="flex flex-wrap gap-4 mb-8">
@@ -90,12 +90,11 @@ export const AboutSection = () => {
                 </div>
                 <p className="text-muted-foreground">Coimbatore, Tamil Nadu</p>
                 <ul className="list-disc pl-6 text-muted-foreground">
-                  <li>Architected full-stack automation tools using Node.js/React.js, reducing manual effort by 20%.</li>
-                  <li>Designed responsive Employee portal with React.js, improving user engagement and experience.</li>
-                  <li>Led VS Code migration as Product Owner, achieving 26% adoption and €870K savings.</li>
-                  <li>Facilitated Visual Studio to VS Code transition, targeting €5M annual optimization.</li>
-                  <li>Enhanced PostgreSQL/Redis performance through optimization, achieving 25% faster API responses.</li>
-                  <li>Implemented CI/CD pipelines with Docker, reducing deployment time by 80%.</li>
+                  <li>Architected and developed full-stack automation tools using React.js frontend and Node.js microservices, reducing manual effort by 20%.</li>
+                  <li>Designed and implemented responsive Employee portal with React.js, significantly improving user engagement.</li>
+                  <li>Led VS Code migration strategy as Product Owner, achieving 26% adoption rate and realizing €870K in operational savings.</li>
+                  <li>Enhanced data-layer performance by optimizing PostgreSQL queries and Redis caching, achieving 25% faster API responses.</li>
+                  <li>Implemented and managed CI/CD pipelines using Jenkins and Docker on Azure, reducing deployment time by 80%.</li>
                 </ul>
               </div>
               {/* Full Stack Developer (Intern) */}
@@ -107,8 +106,8 @@ export const AboutSection = () => {
                 </div>
                 <p className="text-muted-foreground">Bhubaneswar, India</p>
                 <ul className="list-disc pl-6 text-muted-foreground">
-                  <li>Engineered RESTful APIs for B2B fintech platform using Node.js/Express.js, achieving 25% faster response times.</li>
-                  <li>Implemented RBAC system for 5 user roles using JavaScript/Bootstrap, ensuring secure access control.</li>
+                  <li>Engineered scalable, secure RESTful APIs for B2B fintech platform using Node.js/Express.js, achieving 25% faster response times.</li>
+                  <li>Implemented robust Role-Based Access Control (RBAC) system for 5 distinct user roles using JavaScript/Bootstrap, ensuring stringent access control.</li>
                 </ul>
               </div>
             </div>

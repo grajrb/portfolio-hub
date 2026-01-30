@@ -106,7 +106,7 @@ export function HeroSection() {
             </motion.h1>
             <motion.div variants={itemVariants}>
               <span className="inline-block py-2 px-4 bg-gradient-to-r from-primary/10 to-purple-500/10 border border-primary/20 text-primary text-sm rounded-full mb-6 font-medium order-last md:order-first">
-                🚀 Full-Stack Developer • Software Engineer @ Bosch
+                🚀 Full-Stack Developer • Software Engineer @ Bosch GST
               </span>
             </motion.div>
 
@@ -114,8 +114,8 @@ export function HeroSection() {
               variants={itemVariants}
               className="text-xl text-muted-foreground mb-8 max-w-xl leading-relaxed"
             >
-              Results-driven Full-Stack Developer with 2 years of experience architecting scalable, 
-              cloud-native applications. Proficient in MERN stack, microservices, and system design principles.
+              Results-driven Full-Stack Developer with 2.3 years of experience architecting and deploying scalable, 
+              cloud-native applications. Proven track record of delivering €870K in operational savings and achieving 26% user adoption rates in enterprise environments.
             </motion.p>
 
             <motion.div 
