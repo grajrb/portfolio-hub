@@ -79,20 +79,17 @@ export function AboutSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Content */}
-          <motion.div variants={itemVariants}>
+          <motion.div variants={itemVariants} className="flex flex-col justify-start h-full">
             <div className="space-y-6">
               <motion.p 
                 variants={itemVariants}
                 className="text-lg text-muted-foreground leading-relaxed"
               >
-                At Bosch Global Software Technologies, I architect and develop full-stack automation tools using React.js frontend 
-                and Node.js microservices, reducing manual effort by 20%. As Product Owner, I led the VS Code migration strategy, 
-                achieving 26% user adoption and €870K in operational savings. I've enhanced data-layer performance by 25% through 
-                PostgreSQL optimization and Redis caching, and reduced deployment time by 80% with CI/CD pipelines.
+              At Bosch Global Software Technologies, I architect scalable full-stack automation tools using React and Node.js, reducing manual effort by 20%. I led a strategic VS Code migration that realized €870K in operational savings and optimized data layers to achieve 25% faster API responses. Additionally, I slashed deployment time by 80% through robust Azure CI/CD pipelines using Docker and Jenkins. My expertise spans secure RBAC systems, microservices architecture, and cloud-native solutions across AWS and Azure.
               </motion.p>
-              
+{/*               
               <motion.p 
                 variants={itemVariants}
                 className="text-lg text-muted-foreground leading-relaxed"
@@ -101,7 +98,7 @@ export function AboutSection() {
                 My expertise spans the entire development lifecycle, from designing RESTful APIs with 25% faster response times 
                 to implementing Jenkins and Docker CI/CD pipelines on Azure. I'm proficient in microservices architecture, 
                 system design, and distributed systems, with hands-on experience in AWS, Azure, and cloud-native technologies.
-              </motion.p>
+              </motion.p> */}
 
               {/* Skills */}
               <motion.div variants={itemVariants} className="pt-4">
@@ -128,7 +125,7 @@ export function AboutSection() {
           </motion.div>
 
           {/* Right Content - Stats Cards */}
-          <motion.div variants={itemVariants}>
+          <motion.div variants={itemVariants} className="flex flex-col justify-start h-full">
             <div className="grid grid-cols-2 gap-4">
               {stats.map((stat, index) => (
                 <motion.div
